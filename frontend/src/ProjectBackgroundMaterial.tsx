@@ -221,6 +221,8 @@ const rgbToGlsl = (rgb: {r:number, g:number, b:number}):[number, number, number]
   rgb.r / 255, rgb.g / 255, rgb.b / 255,
 ]);
 
+
+
 export const BackgroundColorMaterial = ({ opacity = true, project = null }:
   { opacity: boolean; project:Project|null}) => {
   // const { videoElement } = useVideoElement(src, playing, { debug: false });
@@ -228,9 +230,9 @@ export const BackgroundColorMaterial = ({ opacity = true, project = null }:
 
   const breakpoints = useBreakpoints();
 
-  const projectColor:[number, number, number] = project !== null
-    ? rgbToGlsl(project?.color1?.rgb)
-    : null ?? ([0.333, 0.122, 0.0]);
+  const projectColor:[number, number, number] = (project?.color1?.rgb)
+  ? rgbToGlsl(project.color1.rgb)
+  : [0.333, 0.122, 0.0];
 
   const opacityClock = useMemo(() => {
     const clock = new Clock();

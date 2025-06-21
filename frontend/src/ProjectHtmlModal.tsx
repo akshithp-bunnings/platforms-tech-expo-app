@@ -5,7 +5,7 @@ import { Html } from '@react-three/drei';
 import { Project } from '../generatedSanitySchemaTypes';
 import { CoordArray } from './CoordArray';
 import {
-  ProjectHeader, ProjectBody, ProjectCTA,
+  ProjectHeader, ProjectBody,
 } from './ProjectContent';
 import { CustomCursorHover } from './CustomCursor';
 import { useBreakpoints } from './useBreakpoints';
@@ -23,7 +23,7 @@ export const CloseButton = ({ setOpen }: { setOpen: (_open: boolean) => void; })
           transition-transform
           group
           ${breakpoints.projectOpen
-          ? 'top-[-50vh] left-[min(45vw,450px)]'
+          ? 'top-[-50vh] left-[min(95vw,900px)]'
           : 'left-[50vw] top-[1em] -translate-x-[85%]'}
         `}
         onClick={() => setOpen(false)}
@@ -78,8 +78,8 @@ export const ScollingContentContainer = ({ children }: { children: ReactNode; })
           className={`
             ${breakpoints.projectOpen
             ? `
-              max-w-[450px]
-              w-[45vw]
+              max-w-[900px]
+              w-[60vw]
             ` : `
               w-[94%]
             `}
@@ -138,7 +138,6 @@ export const ProjectHtmlModal = ({ project, position, setOpen }:
       <ScollingContentContainer>
         <ProjectHeader project={project} />
         <ProjectBody project={project} />
-        <ProjectCTA slug={project?.slug?.current ?? 'unset'} />
       </ScollingContentContainer>
     </Html>
   );

@@ -205,29 +205,3 @@ function renderSpans(spans: any[] = []) {
     return <span key={i}>{span.text}</span>;
   });
 }
-
-export const ProjectCTA = ({ slug }:{slug:string}) => (
-  <div className="mb-[5em]">
-    <H2>Questions?</H2>
-    <P className="mb-8">
-      {`
-        Wanna nerd out and talk shop?
-        Have a project of your own you wanna discuss?
-        Just wanna say hi and introduce yourself?
-        I'd love to hear from you!
-      `}
-    </P>
-    <ExternalLink
-      href={contactHref}
-      cursor="contact"
-      onClick={() => {
-        event('cta', {
-          type: 'email',
-          location: `project-${slug}`,
-        });
-      }}
-    >
-      platformtribe.exe
-    </ExternalLink>
-  </div>
-);

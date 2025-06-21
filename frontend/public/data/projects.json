@@ -1,37 +1,212 @@
 [
-    {
-      "_id": "project1",
-      "title": "Interactive Portfolio",
-      "shortTitle": "Portfolio",
-      "slug": {
-        "current": "interactive-portfolio"
-      },
-      "subTitle": "3D Web Experience",
-      "client": "Self",
-      "designers": [
-        {
-          "name": "Your Name",
-          "url": "https://example.com"
-        }
-      ],
-      "links": [
-        {
-          "text": "View Project",
-          "url": "https://example.com/project"
-        }
-      ],
-      "body": [
-        {
-          "_type": "block",
-          "style": "normal",
-          "children": [
-            {
-              "_type": "span",
-              "text": "Project description goes here."
-            }
-          ]
-        }
-      ],
-      "color1": {"hex": "#00FFFF"}
-    }
-  ]
+  {
+    "_id": "project1",
+    "title": "Project Bootstrap",
+    "shortTitle": "Bootstrap",
+    "slug": {
+      "current": "project-bootstrap"
+    },
+    "subTitle": "Accelerating project setup",
+    "client": "Internal",
+    "designers": [
+      {
+        "name": "Akshith Patil",
+        "url": "https://github.com/akshithp-bunnings"
+      }
+    ],
+    "links": [
+      {
+        "text": "View Docs",
+        "url": "https://example.com/project-bootstrap"
+      }
+    ],
+    "body": [
+      {
+        "_type": "block",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "text": "Project Bootstrap automates the tedious setup process for new projects by provisioning cloud resources, configuring pipelines, and setting up repo structure—all from a single YAML file. It improves consistency and developer experience across squads."
+          }
+        ]
+      }
+    ],
+    "color1": { "hex": "#7F5AF0" }
+  },
+  {
+    "_id": "project2",
+    "title": "Multi-Region Load Balancing",
+    "shortTitle": "Load Balancing",
+    "slug": {
+      "current": "multi-region-load-balancing"
+    },
+    "subTitle": "High availability across geographies",
+    "client": "Internal",
+    "designers": [
+      {
+        "name": "Akshith Patil",
+        "url": "https://github.com/akshithp-bunnings"
+      }
+    ],
+    "links": [
+      {
+        "text": "View Architecture",
+        "url": "https://example.com/load-balancing"
+      }
+    ],
+    "body": [
+      {
+        "_type": "block",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "text": "Implemented a multi-region load balancing strategy to ensure Bunnings applications remain resilient and performant. Used Azure Front Door to route traffic intelligently and failover seamlessly between regions."
+          }
+        ]
+      }
+    ],
+    "color1": { "hex": "#FF6B6B" }
+  },
+  {
+    "_id": "project3",
+    "title": "Gen AI Assistant",
+    "shortTitle": "Gen AI",
+    "slug": {
+      "current": "gen-ai-assistant"
+    },
+    "subTitle": "Helping teams with intelligent tools",
+    "client": "Internal",
+    "designers": [
+      {
+        "name": "Akshith Patil",
+        "url": "https://github.com/akshithp-bunnings"
+      }
+    ],
+    "links": [
+      {
+        "text": "Try the Assistant",
+        "url": "https://example.com/gen-ai"
+      }
+    ],
+    "body": [
+      {
+        "_type": "block",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "text": "Developed a Generative AI assistant using Azure OpenAI and Function Apps that integrates with Confluence and GitHub to help developers and new joiners find answers instantly, accelerating onboarding and reducing cognitive load."
+          }
+        ]
+      }
+    ],
+    "color1": { "hex": "#00C896" }
+  },
+  {
+    "_id": "project4",
+    "title": "Traffic Lights Dashboard",
+    "shortTitle": "Traffic Lights",
+    "slug": {
+      "current": "traffic-lights-dashboard"
+    },
+    "subTitle": "Visualizing dependency health",
+    "client": "AHM Digital",
+    "designers": [
+      {
+        "name": "Akshith Patil",
+        "url": "https://github.com/akshithp-bunnings"
+      }
+    ],
+    "links": [
+      {
+        "text": "View Dashboard",
+        "url": "https://example.com/traffic-dashboard"
+      }
+    ],
+    "body": [
+      {
+        "_type": "block",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "text": "Built a dashboard that tracks GitHub repos and npm packages, displaying their dependency health using a red/amber/green system. Enabled better prioritization and visibility into tech debt across engineering teams."
+          }
+        ]
+      }
+    ],
+    "color1": { "hex": "#F5B700" }
+  },
+  {
+    "_id": "project5",
+    "title": "New Services in Production",
+    "shortTitle": "New Services",
+    "slug": {
+      "current": "new-services-in-prod"
+    },
+    "subTitle": "Making services production-ready",
+    "client": "Core Platforms",
+    "designers": [
+      {
+        "name": "Akshith Patil",
+        "url": "https://github.com/akshithp-bunnings"
+      }
+    ],
+    "links": [
+      {
+        "text": "Read More",
+        "url": "https://example.com/new-services"
+      }
+    ],
+    "body": [
+      {
+        "_type": "block",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "text": "Contributed to onboarding and productionizing new internal services by enabling observability (Elastic, Dynatrace), setting up CI/CD, and validating infra-as-code. Improved deployment reliability and service readiness."
+          }
+        ]
+      }
+    ],
+    "color1": { "hex": "#FF5F00" }
+  },
+  {
+    "_id": "project6",
+    "title": "Interactive Portfolio",
+    "shortTitle": "Portfolio",
+    "slug": {
+      "current": "interactive-portfolio"
+    },
+    "subTitle": "3D Web Experience",
+    "client": "Self",
+    "designers": [
+      {
+        "name": "Akshith Patil",
+        "url": "https://akshithpatil.dev"
+      }
+    ],
+    "links": [
+      {
+        "text": "View Project",
+        "url": "https://akshithpatil.dev"
+      }
+    ],
+    "body": [
+      {
+        "_type": "block",
+        "style": "normal",
+        "children": [
+          {
+            "_type": "span",
+            "text": "A 3D and animated portfolio built with React Three Fiber, Tailwind, and Next.js to showcase my projects and developer journey. Features dynamic scenes, interactions, and a clean code-driven aesthetic."
+          }
+        ]
+      }
+    ],
+    "color1": { "hex": "#00BFFF" }
+  }
+]

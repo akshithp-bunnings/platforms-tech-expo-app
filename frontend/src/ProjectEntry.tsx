@@ -124,10 +124,10 @@ export const ProjectEntry = ({
       cubeScale = 3; // hasNoMouse ? 2 : 3;
     }
   }
-  if (open) cubeScale = 1;
+  if (open) cubeScale = 0.8;
 
   const cubePosition:CoordArray = open
-    ? [0, 0, 4]
+    ? [0.2, 0, 4]
     : basePosition;
   const { animatedCubePosition } = useSpring({
     animatedCubePosition: cubePosition,
