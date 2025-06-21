@@ -1,5 +1,19 @@
 import stefImage from '../public/images/stef.jpg';
 import jpImage from '../public/images/jp.jpg';
+import ahmedImage from '../public/teamMemberImages/ahmedImage.png'
+import amalImage from '../public/teamMemberImages/amalImage.png';
+import aravindImage from '../public/teamMemberImages/aravindImage.png';
+import danielImage from '../public/teamMemberImages/danielImage.png';
+import hariImage from '../public/teamMemberImages/hariImage.png';
+import imranImage from '../public/teamMemberImages/imranImage.png';
+import jamesImage from '../public/teamMemberImages/jamesImage.png';
+import kartikImages from '../public/teamMemberImages/kartikImages.png';
+import maiImage from '../public/teamMemberImages/maiImage.png';
+import michaelImge from '../public/teamMemberImages/michaelImage.png';
+import mertImage from '../public/teamMemberImages/mertImage.png';
+import michaelImage from '../public/teamMemberImages/michaelImage.png';
+import priyankaImage from '../public/teamMemberImages/priyankaImage.png';
+import rajImage from '../public/teamMemberImages/rajImage.png';
 
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable max-len */
@@ -10,64 +24,84 @@ export const aboutContent = {
     "We manage Kubernetes, Azure, CI/CD pipelines, observability, and networking — ensuring teams can deploy fast and reliably.",
     "Our mission is to provide stable, scalable, and secure platforms so other squads can focus on building great customer experiences."
   ],
-  testimonials: [
+  teamMembers: [
     {
-      quote:
-        "Bryant's kickass work is complemented by his infectious energy and passion for creating original, exciting work. He is a true creative partner––always bringing new ideas to the table.",
-      shortName: 'Stef',
-      name: 'Stephanie Jung',
-      headshot: stefImage,
-      title: ['Brand Design Lead, Employer Marketing at Handshake'],
+      name: "Ahmed",
+      title: "Senior DevOps Manager (Mr Worldwide)",
+      photo: ahmedImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
-      quote:
-        "Bryant's collaborative mindset and aptitude to explore ideas well beyond the minimum viable product make him an invaluable partner.",
-      name: 'JP Ramirez',
-      shortName: 'JP',
-      title: [
-        'Design Manager, Brand Design Strategy at Intuit',
-        'Director, Studio Ramírez',
-      ],
-      headshot: jpImage,
+      name: "Amal",
+      title: "Senior DevOps Engineer (The Explorer)",
+      photo: amalImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
-      quote:
-        "Bryant's building enables award-winning projects––including FWA Site Of The Day, Webby, 2x Awwwards Honorable Mention, CSSDA Special Kudos, CSSDA Best UI/UX/Innovation, 4x STA100, Type Director's Club, Webby For Good... & more.",
-      name: 'The award people',
-      shortName: 'Awards',
-      headshot: '/images/star-icon.svg',
+      name: "Aravind",
+      title: "Senior DevOps Engineer (The Survivor)",
+      photo: aravindImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
-  ],
-  skills: [
-    `
-      9 years working with
-      best-in-class designers building award-winning projects
-    `,
-    `
-      strong command of design systems. excellent
-      at interpreting mockups in any form (adobe, figma,
-      whatev) and working with minimal OR maximal direction
-    `,
-    `
-      exceptional at visual
-      styling and attention to
-      detail.  whatever tool it
-      takes: CSS, SCSS/PostCSS,
-      Tailwind, animation,
-      2D & 3D rendering...
-    `,
-    `
-      expert communication &
-      project management.
-      leading up, down, and laterally. transforming chaos into launches
-    `,
-    `
-      full stack & at the cutting edge. this site is built with React/NextJS,
-      Typescript, Sanity, Three.js/R3F, GLSL, and a laundry list more
-    `,
-    `
-      always accessible, functional, responsive, compatible,
-      performant and search engine optimized
-    `,
+    {
+      name: "Daniel",
+      title: "DevOps Engineer (The Cowboy)",
+      photo: danielImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
+    },
+    {
+      name: "Hari",
+      title: "Senior DevOps Engineer (SRE Geek)",
+      photo: hariImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
+    },
+    {
+      name: "Imran",
+      title: "DevOps Engineer (The questioner)",
+      photo: imranImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
+    },
+    {
+      name: "James",
+      title: "Associate DevOps Engineer (The Absorber)",
+      photo: jamesImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
+    },
+    {
+      name: "Kartik",
+      title: "Senior DevOps Engineer (The Learner)",
+      photo: kartikImages,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
+    },
+    {
+      name: "Mai",
+      title: "DevOps Engineer (Drama Queen)",
+      photo: maiImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
+    },
+    {
+      name: "Mert",
+      title: "Principal DevOps Engineer (The Survivor)",
+      photo: mertImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
+    },
+    {
+      name: "Michael",
+      title: "Senior DevOps Engineer (Mr Moustache)",
+      photo: michaelImge,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
+    },
+    {
+      name: "Priyanka",
+      title: "DevOps Engineer (Ms Adaptable)",
+      photo: priyankaImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
+    },
+    {
+      name: "Raj",
+      title: "Senior DevOps Delivery Lead (The Recruiter)",
+      photo: rajImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
+    },
   ],
 };

@@ -11,4 +11,5 @@ export default {
   yellow: '#ffff00',
   coffee: '#551F00',
   coffeeLight: '#803003',
+  grayCode: '#B5B5B5'
 };

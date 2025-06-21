@@ -38,6 +38,7 @@ module.exports = {
       yellow: '#ffff00',
       coffee: '#551F00',
       projectColor: 'var(--projectColor)',
+      grayCode: '#B5B5B5'
     },
     fontFamily: {
       mono: '"Roboto Mono", monospace',

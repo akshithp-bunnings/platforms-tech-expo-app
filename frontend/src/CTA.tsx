@@ -6,6 +6,7 @@ import { useParamOnLoad } from './useParamOnLoad';
 import { contactHref, linkedInHref, twitterHref } from './contactHref';
 import { useSceneController } from './SceneController';
 import MailIconSvg from './svg/MailIconSvg';
+import ComputerIcon from './svg/ComputerIcon'
 import { useChangingColorPalette } from './useChangingColorPalette';
 import { useDelayedBoolean } from './useDelayedBoolean';
 import LinkedInIconSvg from './svg/LinkedInIconSvg';
@@ -14,48 +15,26 @@ import TwitterIconSvg from './svg/TwitterIconSvg';
 // const availablity = 'available Q4';
 
 const ctas = [
-  null,
-  null,
-  'avail 4 freelance!',
-  null,
-  null,
-  'avail 4 freelance!',
-  null,
-  null,
-  'wow so clickable',
-  'much convert',
-  null,
-  null,
-  'avail 4 freelance!',
-  null,
-  null,
-  'this is my CTA',
-  'i hope you like it',
-  null,
-  null,
-  'trying to strike',
-  'a self-aware tone with it',
-  'but still have it work',
-  'ya know?',
-  null,
-  null,
-  'are the colors too much?',
-  'how bout the hover state?',
-  null,
-  null,
-  'ngl, very outta',
-  'my comfort zone',
-  'to self-promote',
-  'lolololol',
-  null,
-  null,
-  'feels sorta like',
-  'selling peanuts',
-  'at a ballgame',
-  "but I'M THE PEANUTS",
-  '"webdev!"',
-  '"get your webdev, here!"',
-  '"webdeeeeeev!"',
+  'infra magic loading...',
+  'ask us about pipelines 🛠️',
+  '99.999% uptime... probably',
+  'we speak YAML fluently',
+  'terraform apply —all ❤️',
+  'SREs hate this one trick!',
+  'certs auto-renewed ✅',
+  'zero downtime, big flex',
+  'alert fatigue? never heard of her',
+  'kubectl get coffee ☕',
+  'runbook says hi 👋',
+  'CI/CD? More like Cya bugs!',
+  'infra as code = peace of mind',
+  'one script to rule them all',
+  'restarting pods since 2021',
+  '🎯 aim for idempotence',
+  'git push --force 🤫',
+  'ping us, we’re alive',
+  'devs break things, we fix them',
+  'supporting squads silently 😎',
 ];
 
 export const useShowCtas = () => {
@@ -175,14 +154,13 @@ export const CTA = () => {
         >
           <h2 className="sr-only">Contact</h2>
           <span className="tracking-[-0.01em] flex gap-[0.75em] underline decoration-2 underline-offset-[6px]">
-            <MailIconSvg className="w-[2em] h-[1.625em]" />
             {ctas[ctaIndex] ?? (
               <span>
                 hello
                 <span className="text-[0.7em]">&nbsp;</span>
                 <span>@</span>
                 <span className="text-[0.7em]">&nbsp;</span>
-                bryantcodes.art
+                platformtribe.exe
               </span>
             )}
           </span>

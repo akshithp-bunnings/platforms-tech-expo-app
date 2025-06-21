@@ -227,7 +227,7 @@ export const ProjectCTA = ({ slug }:{slug:string}) => (
         });
       }}
     >
-      hello @ bryantcodes.art
+      platformtribe.exe
     </ExternalLink>
   </div>
 );

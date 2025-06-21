@@ -16,13 +16,13 @@ import { SlideName } from './SlideName';
 import { ImageWindow } from './ImageWindow';
 import { TextWindow } from './TextWindow';
 import { TerminalButton } from './TerminalButton';
-import { TestimonialsWindow } from './TestimonialsWindow';
+// TestimonialsWindow import removed
 import colors from './colors';
-// import { AwardsWindow } from './AwardsWindow';
 import { TerminalWindowButton } from './TerminalWindowButton';
 import { aboutContent } from './aboutContent';
-import selfPortraitImage from '../public/images/self-portrait.jpg';
-import haileyImage from '../public/images/hailey2.jpg';
+import teamimage from '../public/teamMemberImages/platform_gang.png'
+import { TeamMemberWindow } from './TeamMemberWindow';
+// Removed hailey image since it was used in testimonials section
 
 export const Slides = ({
   slide, setScene, setSlide,
@@ -52,11 +52,10 @@ export const Slides = ({
           <TerminalButton
             onClick={() => {
               setScene('about');
-              // setSlide('skills');
               setSlide('mission');
             }}
             delay={buttonDelay}
-            className="text-[max(1.5em,16px)]"
+            className="text-[max(1.2em,16px)]"
             tabIndex={scene === 'menu' ? 0 : -1}
           >
             ABOUT_OUR_TEAM
@@ -68,7 +67,8 @@ export const Slides = ({
 
   return (
     <>
-      {(slide === 'mission' || slide === 'testimonials' || slide === 'skills') && (
+      {/* Updated conditions to only check for mission or skills */}
+      {(slide === 'mission' || slide === 'skills') && (
         <div
           className={`
           grid h-full
@@ -91,25 +91,24 @@ export const Slides = ({
             topColor="violet"
             wrapperClassName="p-[1em]"
             texts={aboutContent.mission}
-            // icon="/images/computer-icon.svg"
-            // icon="/images/alert-icon.svg"
             buttonColor="pink"
-            buttonText="tell me more!"
+            buttonText="Want to meet the team?"
             onClick={() => {
-              setSlide('testimonials');
+              // Changed to go directly to skills
+              setSlide('skills');
             }}
             disabled={slide !== 'mission'}
           />
           <ImageWindow
             delay={300}
-            title="SELF_CONCEPT.jpg"
+            title="PLATFORM_GANG.jpg"
             positions={['center']}
             topColor="yellow"
             className={`
             ${breakpoints.about ? `
-              self-end min-h-[12em] h-[13em] ml-[-1em] mb-[2em]
+             self-end min-h-[14em] h-[16em] ml-[-2em] mb-[1em] mr-[-2em]
             ` : `
-              min-w-[220px]
+              min-w-[300px]
               aspect-[9/8]
               justify-self-end  mt-[2em]
             `}
@@ -117,98 +116,14 @@ export const Slides = ({
             transition-transform duration-[1s]
             ${slide === 'mission' ? '' : 'translate-x-[20%] translate-y-[70%]'}
           `}
-            srcs={[selfPortraitImage]}
+            srcs={[teamimage]}
             alts={['Crayon illustration of Bryant from decades ago.']}
           />
         </div>
       )}
-      {(slide === 'testimonials' || slide === 'skills') && (
-      <div
-        className={`
-          absolute top-0 left-0 w-full h-full
-          pointer-events-none
-          ${breakpoints.about ? 'grid grid-cols-[1fr_80%]' : 'grid grid-cols-1'}
-        `}
-      >
-        <ImageWindow
-          delay={100}
-          title="HAILEY.jpg"
-          topColor="violet"
-          positions={['60% 15%']}
-          className={`
-            ${breakpoints.about ? `
-              self-start h-[13em] mr-[-2em] w-[10em] mt-[6em]
-            ` : `
-              w-[90%] max-w-[28em]
-              aspect-[7/9]
-              justify-self-start mb-[-12em] ml-[2em]
-              min-h-[300px]
-              h-[300px]
-              col-[1/-1] row-[1/-1]
-            `}
-            transition-transform duration-[1s]
-            ${slide === 'testimonials' ? '' : 'translate-x-[-70%] translate-y-[-10%]'}
-          `}
-          srcs={[haileyImage]}
-          alts={['My dog Hailey smiling her crazy smile.']}
-        />
-
-        <TestimonialsWindow
-          className={`
-            relative
-            transition-transform duration-[1s]
-            ${slide === 'testimonials' ? '' : 'translate-x-[43%] translate-y-[-80%]'}
-            ${breakpoint ? 'self-baseline' : 'col-[1/-1] row-[1/-1] self-end'}
-          `}
-          delay={1000}
-          title="KIND_WORDS_FROM_OTHERS.exe"
-          color={colors.lime}
-          topColor={colors.cyan}
-        >
-          <div className={`grid place-items-center mt-[2em] ${breakpoint ? 'col-span-2' : ''}`}>
-            <TerminalWindowButton
-              onClick={() => {
-                setSlide('skills');
-              }}
-              delay={1000}
-              color="black"
-              bgColor="violet"
-              disabled={slide !== 'testimonials'}
-            >
-              skills, tho?
-            </TerminalWindowButton>
-          </div>
-
-        </TestimonialsWindow>
-        {/* <TextWindow
-          title={null}
-          className={`
-            relative self-baseline
-            ${breakpoints.about ? '' : `
-              w-[90%] min-w-[300px] max-w-[30em] justify-self-start
-            `}
-            transition-transform duration-[1s]
-            ${slide === 'process' ? '' : 'translate-x-[43%] translate-y-[-80%]'}
-          `}
-          delay={500}
-          icon="/images/alert-icon.svg"
-          topColor="yellow"
-          color="lime"
-          wrapperClassName="p-[1em]"
-          texts={[
-            'I\'m a fullstack web dev, a creative, and a partner you can trust with your project.',
-            'Already have a vision? I\'ll realize it down to the pixel.
-            Searching? Let\'s find it together.',
-          ]}
-          buttonColor="violet"
-          buttonText="skills tho?"
-          disabled={slide !== 'process'}
-          onClick={() => {
-            setSlide('skills');
-          }}
-        /> */}
-      </div>
-      )}
+      
+      {/* Testimonials section removed */}
+      
       {(slide === 'skills') && (
         <div
           className={`
@@ -218,14 +133,22 @@ export const Slides = ({
           pointer-events-none
         `}
         >
-          <SkillArtWindow
+          {/* <SkillArtWindow
             className="w-full h-full"
-            title="PAINT_TO_REVEAL_MY_SKILLS"
+            title="PAINT_TO_SEE_THE_TEAM"
             color="white"
             topColor="white"
             setScene={setScene}
             setSlide={setSlide}
-            // draggable={false}
+          /> */}
+          <TeamMemberWindow
+            className="w-full h-full pointer-events-auto"
+            title="TEAM_MEMBERS.exe"
+            color="white"
+            topColor="red"
+            teamMembers={aboutContent.teamMembers}
+            setScene={setScene}
+            setSlide={setSlide}
           />
         </div>
       )}
@@ -244,15 +167,10 @@ export function ComputerTerminal() {
     _setSlide(name);
   };
 
-  // We cant use drei/HTML transform property to manage the size of this div
-  // Why? Because a close camera will scale it up so much
-  // On Safari (which kinda isnt great for subpixel rendering things)
-  // it will be blurry
-  // Instead, we do trigonometry to get the exact pixel size
-
-  // Position and size of plane that our div should cover as closely as possible (this is to adjust size of the text on computer screen)
-  const position:CoordArray = [-1, 0.7, 2];
-  const planeSizeInWorldUnits = [3.0, 2];
+  // Position and size of plane that our div should cover as closely as possible
+  const position:CoordArray = [-1, 0.7, 1.8];
+  // Increased the size slightly for better readability
+  const planeSizeInWorldUnits = [2.7, 2.2];
 
   // Canvas is full window
   const windowSize = useWindowSize();
@@ -284,14 +202,9 @@ export function ComputerTerminal() {
     /** Height of our plane in screen pixels */
     const planeHeightInPixels = (planeSizeInWorldUnits[1] / worldCameraHeight) * windowSize.height;
 
-    // We can help out with responsive behavior here by limiting this
-    // div to be always smaller than the screen
-    // const width = Math.min(planeWidthInPixels, windowSize.width * 0.9);
-    // const height = Math.min(planeHeightInPixels, windowSize.height * 0.8);
-
-    // Apply sizing to our terminal div via CSS vars
-    terminalDivRef.current.style.setProperty('--terminal-width', `min(${windowSize.width * 0.9}px, ${planeWidthInPixels}px)`);
-    terminalDivRef.current.style.setProperty('--terminal-height', `min(80 * var(--vh), ${planeHeightInPixels}px)`);
+    // Apply sizing to our terminal div via CSS vars - increased scale factor
+    terminalDivRef.current.style.setProperty('--terminal-width', `min(${windowSize.width * 0.95}px, ${planeWidthInPixels * 1.1}px)`);
+    terminalDivRef.current.style.setProperty('--terminal-height', `min(90 * var(--vh), ${planeHeightInPixels * 1.1}px)`);
   });
 
   // Exit on escape key
@@ -318,7 +231,7 @@ export function ComputerTerminal() {
                 w-[var(--terminal-width)] h-[var(--terminal-height)]
               `}
             style={{
-              fontSize: 'calc(var(--terminal-width)/40)',
+              fontSize: 'calc(var(--terminal-width)/38)', // Slightly larger font
             }}
             ref={terminalDivRef}
           >

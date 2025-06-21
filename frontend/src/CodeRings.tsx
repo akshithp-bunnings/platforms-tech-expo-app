@@ -42,16 +42,16 @@ const UPDATE_INTERVAL = 100;
 const TEXT_LINE_LENGTH = 158;
 /** The possible lines of code we can type on the rings */
 const TEXT_LINES = [
-  '<TurboEncabulator><Amulite prefabulated /><HydrocopticMarzelvanes count={6} /><Panendermic /><Panendermic semiboloid /></TurboEncabulator>',
-  'rm -rf node_modules && npm install && npm run build && npm run hope && npm start',
-  '// I hope github copilot will finish this part...',
-  '<AllWorkAndNoPlayMakesBryantADullBoy /><AllWorkAndNoPlayMakesBryantADullBoy /><AllWorkAndNoPlayMakesBryantADullBoy /><AllWorkAndNoPlayMakesBryantADullBoy />',
-  'useOnMyDeath(()=>{ eraseBrowserHistoryOnAllDevices(); doItAgainJustToBeSure(); tripleCheck(); youKnowWhatMaybeJustIncinerateTheHardDrives(); }); ',
-  'const debugInterval = setInterval(()=>{if(prompt(\'Program still working?\')==="nope") throw new Error("bug.");}, 100);',
-  '<Burrito spicy={100}>{toppings.map((tProps:{name:string,spicy:number,isHotsauce:boolean,vegan:boolean})=>(<Topping {...(tprops)} key={name} />)}</Burrito>',
-  'if(i%(3*(7*3+2))===0) return "nice"; if(i%3===0 && i%5===0) return "fizzbuzz"; if(i%3===0) return "fizz"; if(i%5===0) return "buzz";',
-  // eslint-disable-next-line no-template-curly-in-string
-  'const isEven = async (i:number) => {const res = await fetch(`https://iseven.com/api/numbers/${i}`); const {isEven} = await res.json(); return isEven; }',
+  '// Jenkins pipeline ran 97 steps to lint one file, then failed because someone used tabs instead of spaces. Classic day in Platform Engineering...',
+'const deployToProd = () => { if (friday || afterHours) { throw new Error("Nice try, not today."); } return "Ship it 🛳️"; }; // Safety first!',
+'<BunningsDigitalTeam tools={[Terraform, Jenkins, Kubernetes, Copium]} mood="optimistic" onCallRotation="whoever blinks last" />;',
+'// When in doubt, blame the YAML indentation. If still broken, re-run the same thing 3 times and act surprised when it finally works.',
+'const platformEngineer = { caffeine: 98, sanity: 3, favoriteTool: "Terraform", swornEnemy: "Legacy shell scripts in prod" }; // Accurate vibes.',
+'try { deploy(); } catch (error) { console.log("Call Ryan, reboot Jenkins, then pretend this never happened."); } finally { panic(); }',
+'// Fun fact: The number of failed builds is directly proportional to how many people are watching. CI stands for "Constantly Irritating".',
+'while(true) { automate(); breakStuff(); writeDocs("TODO"); blameDNS(); hope(); } // Our daily CI/CD ritual, brought to you by the Platform squad.',
+'if (terraform.apply === "green") { deploy(); } else { openPagerDuty(); explainToTeam("I have no idea what went wrong"); } // every time.',
+'const lifeCycle = ["build", "break", "fix", "refactor", "forget", "repeat"]; // Now available in 6 easy Jenkins stages!',
 ].map((line) => line + ((new Array(TEXT_LINE_LENGTH - line.length)).fill('.').join('')));
 
 /**
@@ -107,7 +107,7 @@ function createTextCanvas(): HTMLCanvasElement | null {
     context.font = `${dark ? 400 : 200} ${FONT_SIZE}px 'Roboto Mono'`;
     context.textAlign = 'left';
     context.textBaseline = 'middle';
-    context.fillStyle = colors.blue;
+    context.fillStyle = colors.white;
     context.fillText(textToWrite, 0, canvas.height / 2);
   };
 

@@ -23,7 +23,7 @@
 } */
 
 body {
-  @apply no-scrollbar select-none overflow-hidden touch-none bg-white transition-colors duration-1000;
+  @apply no-scrollbar select-none overflow-hidden touch-none bg-black transition-colors duration-1000;
 
   height: calc(100 * var(--vh));
 }

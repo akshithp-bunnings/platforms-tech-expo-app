@@ -7,7 +7,6 @@ import { Computer } from './Computer';
 import { CoffeeCup } from './CoffeeCup';
 import { CoordArray } from './CoordArray';
 import { useSceneController } from './SceneController';
-import { Notebook } from './Notebook';
 // import { routerLog } from './loggers';
 import { SiteData } from './SiteData';
 import { ProjectListing } from './ProjectListing';
@@ -32,7 +31,6 @@ export function SceneDirector({
   const breakpoints = useBreakpoints();
 
   const showCoffeeCup = scene !== 'intro' && scene !== 'start';
-  const showNotebook = scene !== 'intro' && scene !== 'start';
 
   const projectListingPosition = [0, breakpoints.projects ? -12 : -11, 1];
 
@@ -110,7 +108,7 @@ export function SceneDirector({
       <BackgroundScribbles />
       <Computer />
       {showCoffeeCup && <CoffeeCup />}
-      {showNotebook && <Notebook />}
+      {/* {showNotebook && <Notebook />} */}
       <ProjectListing
         projects={projects}
         position={projectListingPosition as CoordArray}
