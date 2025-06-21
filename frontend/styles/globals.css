@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'Bryant';
+  src: url('/fonts/bryant/bryantBold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Vars we reference in tailwind classes */
+/* :root {
+  @screen lg {
+  }
+} */
+
+/* canvas {
+  @apply absolute top-0 left-0 w-full h-full;
+} */
+/* canvas {
+  border: 5px solid red;
+} */
+
+body {
+  @apply no-scrollbar select-none overflow-hidden touch-none bg-white transition-colors duration-1000;
+
+  height: calc(100 * var(--vh));
+}
+
+/* Global focus style */
+*:focus-visible {
+  outline: 4px solid red;
+}
+
+/*The div on this button can sometimes block mouse
+ and doing this does NOT break anything. */
+div:has(> button[r3f-a11y='true']) {
+  /* Uncomment to make these visible... */
+  /* opacity: 1 !important;
+  outline: 4px solid red; */
+  pointer-events: none !important;
+}
