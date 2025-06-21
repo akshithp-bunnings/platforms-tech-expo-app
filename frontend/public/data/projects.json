@@ -3,210 +3,104 @@
     "_id": "project1",
     "title": "Project Bootstrap",
     "shortTitle": "Bootstrap",
-    "slug": {
-      "current": "project-bootstrap"
-    },
+    "slug": { "current": "project-bootstrap" },
     "subTitle": "Accelerating project setup",
-    "client": "Internal",
-    "designers": [
-      {
-        "name": "Akshith Patil",
-        "url": "https://github.com/akshithp-bunnings"
-      }
-    ],
-    "links": [
-      {
-        "text": "View Docs",
-        "url": "https://example.com/project-bootstrap"
-      }
-    ],
     "body": [
       {
-        "_type": "block",
-        "style": "normal",
-        "children": [
-          {
-            "_type": "span",
-            "text": "Project Bootstrap automates the tedious setup process for new projects by provisioning cloud resources, configuring pipelines, and setting up repo structure—all from a single YAML file. It improves consistency and developer experience across squads."
-          }
-        ]
+        "_type": "text",
+        "content": "Project Bootstrap automates the tedious setup process for new projects by provisioning cloud resources, configuring pipelines, and setting up repo structure—all from a single YAML file.",
+        "style": "h4"
+      },
+      {
+        "_type": "image",
+        "url": "/data-images/bootstrap-diagram.png",
+        "alt": "Architecture diagram showing project bootstrap flow",
+        "caption": "How Project Bootstrap works"
+      },
+      {
+        "_type": "text",
+        "content": "Key features include:",
+        "style": "h2"
+      },
+      {
+        "_type": "text",
+        "content": "The system has drastically reduced setup time from 3 days to 20 minutes.",
+        "style": "normal"
+      },
+      {
+        "_type": "video",
+        "url": "/videos/project-bootstrap-demo.mp4",
+        "poster": "/videos/project-bootstrap-demo-thumb.jpg",
+        "caption": "See it in action"
       }
-    ],
-    "color1": { "hex": "#7F5AF0" }
+    ]
   },
   {
     "_id": "project2",
     "title": "Multi-Region Load Balancing",
     "shortTitle": "Load Balancing",
-    "slug": {
-      "current": "multi-region-load-balancing"
-    },
+    "slug": { "current": "multi-region" },
     "subTitle": "High availability across geographies",
-    "client": "Internal",
-    "designers": [
-      {
-        "name": "Akshith Patil",
-        "url": "https://github.com/akshithp-bunnings"
-      }
-    ],
-    "links": [
-      {
-        "text": "View Architecture",
-        "url": "https://example.com/load-balancing"
-      }
-    ],
     "body": [
       {
-        "_type": "block",
-        "style": "normal",
-        "children": [
-          {
-            "_type": "span",
-            "text": "Implemented a multi-region load balancing strategy to ensure Bunnings applications remain resilient and performant. Used Azure Front Door to route traffic intelligently and failover seamlessly between regions."
-          }
-        ]
+        "_type": "text",
+        "content": "Implemented a multi-region load balancing strategy using Azure Front Door to ensure Bunnings applications remain resilient and performant across geographies.",
+        "style": "normal"
+      },
+      {
+        "_type": "text",
+        "content": "Helps achieve near-zero downtime with auto-failover between primary and secondary regions.",
+        "style": "normal"
       }
-    ],
-    "color1": { "hex": "#FF6B6B" }
+    ]
   },
   {
     "_id": "project3",
     "title": "Gen AI Assistant",
     "shortTitle": "Gen AI",
-    "slug": {
-      "current": "gen-ai-assistant"
-    },
+    "slug": { "current": "genai" },
     "subTitle": "Helping teams with intelligent tools",
-    "client": "Internal",
-    "designers": [
-      {
-        "name": "Akshith Patil",
-        "url": "https://github.com/akshithp-bunnings"
-      }
-    ],
-    "links": [
-      {
-        "text": "Try the Assistant",
-        "url": "https://example.com/gen-ai"
-      }
-    ],
     "body": [
       {
-        "_type": "block",
-        "style": "normal",
-        "children": [
-          {
-            "_type": "span",
-            "text": "Developed a Generative AI assistant using Azure OpenAI and Function Apps that integrates with Confluence and GitHub to help developers and new joiners find answers instantly, accelerating onboarding and reducing cognitive load."
-          }
-        ]
+        "_type": "text",
+        "content": "Developed a GenAI assistant using Azure OpenAI and Azure Functions that answers team queries across Confluence and GitHub to boost productivity and onboarding speed.",
+        "style": "normal"
+      },
+      {
+        "_type": "image",
+        "url": "/images/gen-ai-screenshot.png",
+        "alt": "Screenshot of Gen AI Assistant",
+        "caption": "Gen AI in action"
       }
-    ],
-    "color1": { "hex": "#00C896" }
+    ]
   },
   {
     "_id": "project4",
     "title": "Traffic Lights Dashboard",
     "shortTitle": "Traffic Lights",
-    "slug": {
-      "current": "traffic-lights-dashboard"
-    },
+    "slug": { "current": "traffic-lights" },
     "subTitle": "Visualizing dependency health",
-    "client": "AHM Digital",
-    "designers": [
-      {
-        "name": "Akshith Patil",
-        "url": "https://github.com/akshithp-bunnings"
-      }
-    ],
-    "links": [
-      {
-        "text": "View Dashboard",
-        "url": "https://example.com/traffic-dashboard"
-      }
-    ],
     "body": [
       {
-        "_type": "block",
-        "style": "normal",
-        "children": [
-          {
-            "_type": "span",
-            "text": "Built a dashboard that tracks GitHub repos and npm packages, displaying their dependency health using a red/amber/green system. Enabled better prioritization and visibility into tech debt across engineering teams."
-          }
-        ]
+        "_type": "text",
+        "content": "Built a dashboard that is using a red/amber/green indicator system.",
+        "style": "normal"
       }
-    ],
-    "color1": { "hex": "#F5B700" }
+    ]
   },
   {
     "_id": "project5",
     "title": "New Services in Production",
     "shortTitle": "New Services",
-    "slug": {
-      "current": "new-services-in-prod"
-    },
+    "slug": { "current": "new-services" },
     "subTitle": "Making services production-ready",
     "client": "Core Platforms",
-    "designers": [
-      {
-        "name": "Akshith Patil",
-        "url": "https://github.com/akshithp-bunnings"
-      }
-    ],
-    "links": [
-      {
-        "text": "Read More",
-        "url": "https://example.com/new-services"
-      }
-    ],
     "body": [
       {
-        "_type": "block",
-        "style": "normal",
-        "children": [
-          {
-            "_type": "span",
-            "text": "Contributed to onboarding and productionizing new internal services by enabling observability (Elastic, Dynatrace), setting up CI/CD, and validating infra-as-code. Improved deployment reliability and service readiness."
-          }
-        ]
+        "_type": "text",
+        "content": "Onboarded and productionized new internal services with observability, CI/CD pipelines, and infrastructure validation using Terraform and GitLab.",
+        "style": "normal"
       }
-    ],
-    "color1": { "hex": "#FF5F00" }
-  },
-  {
-    "_id": "project6",
-    "title": "Interactive Portfolio",
-    "shortTitle": "Portfolio",
-    "slug": {
-      "current": "interactive-portfolio"
-    },
-    "subTitle": "3D Web Experience",
-    "client": "Self",
-    "designers": [
-      {
-        "name": "Akshith Patil",
-        "url": "https://akshithpatil.dev"
-      }
-    ],
-    "links": [
-      {
-        "text": "View Project",
-        "url": "https://akshithpatil.dev"
-      }
-    ],
-    "body": [
-      {
-        "_type": "block",
-        "style": "normal",
-        "children": [
-          {
-            "_type": "span",
-            "text": "A 3D and animated portfolio built with React Three Fiber, Tailwind, and Next.js to showcase my projects and developer journey. Features dynamic scenes, interactions, and a clean code-driven aesthetic."
-          }
-        ]
-      }
-    ],
-    "color1": { "hex": "#00BFFF" }
+    ]
   }
 ]
