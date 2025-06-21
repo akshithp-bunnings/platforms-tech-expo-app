@@ -14,6 +14,7 @@ import mertImage from '../public/teamMemberImages/mertImage.png';
 import michaelImage from '../public/teamMemberImages/michaelImage.png';
 import priyankaImage from '../public/teamMemberImages/priyankaImage.png';
 import rajImage from '../public/teamMemberImages/rajImage.png';
+import akImage from '../public/teamMemberImages/akImage.png'
 
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable max-len */
@@ -27,79 +28,85 @@ export const aboutContent = {
   teamMembers: [
     {
       name: "Ahmed",
-      title: "Senior DevOps Manager (Mr Worldwide)",
+      title: "Senior DevOps Manage (Mr Worldwide🌍)",
       photo: ahmedImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
+      name: "AK",
+      title: "Graduate Engineer (The Rookie👶)",
+      photo: akImage,
+      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
+    },
+    {
       name: "Amal",
-      title: "Senior DevOps Engineer (The Explorer)",
+      title: "Senior DevOps Engineer (The Explorer)🧐",
       photo: amalImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
       name: "Aravind",
-      title: "Senior DevOps Engineer (The Survivor)",
+      title: "Senior DevOps Engineer (The Survivor🔥)",
       photo: aravindImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
       name: "Daniel",
-      title: "DevOps Engineer (The Cowboy)",
+      title: "DevOps Engineer (The Cowboy🤠)",
       photo: danielImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
       name: "Hari",
-      title: "Senior DevOps Engineer (SRE Geek)",
+      title: "Senior DevOps Engineer (SRE Geek🤓)",
       photo: hariImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
       name: "Imran",
-      title: "DevOps Engineer (The questioner)",
+      title: "DevOps Engineer (The questioner🤔)",
       photo: imranImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
       name: "James",
-      title: "Associate DevOps Engineer (The Absorber)",
+      title: "Associate DevOps Engineer (The Absorber😄)",
       photo: jamesImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
       name: "Kartik",
-      title: "Senior DevOps Engineer (The Learner)",
+      title: "Senior DevOps Engineer (The Learner🧐)",
       photo: kartikImages,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
       name: "Mai",
-      title: "DevOps Engineer (Drama Queen)",
+      title: "DevOps Engineer (Drama Queen👸)",
       photo: maiImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
       name: "Mert",
-      title: "Principal DevOps Engineer (The Survivor)",
+      title: "Principal DevOps Engineer (The Survivor🔥)",
       photo: mertImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
       name: "Michael",
-      title: "Senior DevOps Engineer (Mr Moustache)",
+      title: "Senior DevOps Engineer (Mr Moustache🥸)",
       photo: michaelImge,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
       name: "Priyanka",
-      title: "DevOps Engineer (Ms Adaptable)",
+      title: "DevOps Engineer (Ms Adaptable👩‍💼)",
       photo: priyankaImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
     {
       name: "Raj",
-      title: "Senior DevOps Delivery Lead (The Recruiter)",
+      title: "Senior DevOps Delivery Lead (The Recruiter🕵️‍♂️)",
       photo: rajImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },

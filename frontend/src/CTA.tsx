@@ -166,37 +166,6 @@ export const CTA = () => {
           </span>
         </a>
       </CustomCursorHover>
-      <nav
-        className={`
-          block fixed bottom-0 right-0 text-[min(4vw,1.3rem)]  pr-[1rem] py-[1rem] font-mono tracking-wide pl-[0.5em]
-          ${showCTAs ? '' : 'translate-y-[200%]'} transition-all duration-300
-          z-[88888888]
-          ${hover ? 'scale-[1.3]' : ''} origin-bottom-right
-        `}
-        style={{
-          filter: 'drop-shadow(0 0 0.2rem black) drop-shadow(0 0 0.2rem black)',
-          background: bgColor,
-          color: textColor,
-          stroke: textColor,
-        }}
-        onMouseEnter={onFocus}
-        onMouseLeave={onBlur}
-      >
-        <h2 className="sr-only">Social</h2>
-        <ul className="flex gap-[0.5em]">
-          <li>
-            <SocialLink
-              title="LinkedIn"
-              IconSvg={LinkedInIconSvg}
-              showCTAs={showCTAs}
-              href={linkedInHref}
-              onFocus={onFocus}
-              onBlur={onBlur}
-              cursor="linked-in"
-            />
-          </li>
-        </ul>
-      </nav>
       {showBg && (
         <div
           className="top-0 left-0 fixed w-full h-full overflow-hidden z-[-1] text-[2vw] font-mono text-white break-all opacity-30"

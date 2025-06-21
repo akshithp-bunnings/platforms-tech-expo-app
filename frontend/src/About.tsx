@@ -144,8 +144,8 @@ export const Slides = ({
           <TeamMemberWindow
             className="w-full h-full pointer-events-auto"
             title="TEAM_MEMBERS.exe"
-            color="white"
-            topColor="red"
+            color="black"
+            topColor="pink"
             teamMembers={aboutContent.teamMembers}
             setScene={setScene}
             setSlide={setSlide}

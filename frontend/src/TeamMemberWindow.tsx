@@ -59,7 +59,7 @@ export const TeamMemberWindow = ({
         </div>
         
         {/* Right side - Member info */}
-        <div className="flex flex-col justify-between h-full p-2">
+        <div className="flex flex-col text-white justify-between h-full p-2">
           <div>
             <h2 className="text-2xl font-bold font-mono mb-2">{currentMember.name}</h2>
             <h3 className="text-lg font-semibold font-mono mb-4 text-blue-300">{currentMember.title}</h3>
