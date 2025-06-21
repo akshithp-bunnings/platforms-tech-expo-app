@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { event } from 'nextjs-google-analytics';
 import { CustomCursorHover, CustomCursorState } from './CustomCursor';
 import ExternalLinkIconSvg from './svg/ExternalLinkIconSvg';
-import { contactHref } from './contactHref';
 
 // Updated Project type that matches our JSON structure
 export type Project = {

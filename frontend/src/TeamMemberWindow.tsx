@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { TerminalWindow } from './TerminalWindow';
 import { TerminalWindowButton } from './TerminalWindowButton';
 import Image from 'next/image';
+import { SceneName } from '../src/SceneController';
+import { SlideName } from './SlideName';
 
 export const TeamMemberWindow = ({
   className,

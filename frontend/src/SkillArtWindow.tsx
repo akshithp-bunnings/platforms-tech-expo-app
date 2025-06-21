@@ -13,18 +13,14 @@ import { event } from 'nextjs-google-analytics';
 import { TerminalWindowProps } from './TerminalWindowProps';
 import { DrawFill } from './DrawFill';
 import { TerminalWindow } from './TerminalWindow';
-// import { useImgElement } from './useImgElement';
 import { CustomCursorHover } from './CustomCursor';
 import { TerminalWindowButton } from './TerminalWindowButton';
 import { SceneName } from './SceneController';
 import { SlideName } from './SlideName';
-import { contactHref } from './contactHref';
 import { useBreakpoints } from './useBreakpoints';
-import { aboutContent } from './aboutContent';
 import { useTrueAfterDelay } from './useTrueAfterDelay';
 import { useHasNoMouse } from './useHasNoMouse';
 
-const { skills } = aboutContent;
 
 const resolutionMultiplier = 2.0;
 
@@ -560,12 +556,12 @@ export const SkillArtWindow = ({
   const breakpoints = useBreakpoints();
   const breakpoint = breakpoints.about;
 
-  useAddDrawFill(drawFills, skills[0], 'red', 'white', breakpoint);
-  useAddDrawFill(drawFills, skills[1], 'violet', 'black', breakpoint);
-  useAddDrawFill(drawFills, skills[2], 'orange', 'black', breakpoint);
-  useAddDrawFill(drawFills, skills[3], 'yellow', 'black', breakpoint);
-  useAddDrawFill(drawFills, skills[4], 'lime', 'black', breakpoint);
-  useAddDrawFill(drawFills, skills[5], 'blue', 'white', breakpoint);
+  // useAddDrawFill(drawFills, skills[0], 'red', 'white', breakpoint);
+  // useAddDrawFill(drawFills, skills[1], 'violet', 'black', breakpoint);
+  // useAddDrawFill(drawFills, skills[2], 'orange', 'black', breakpoint);
+  // useAddDrawFill(drawFills, skills[3], 'yellow', 'black', breakpoint);
+  // useAddDrawFill(drawFills, skills[4], 'lime', 'black', breakpoint);
+  // useAddDrawFill(drawFills, skills[5], 'blue', 'white', breakpoint);
 
   const [currentFill, setCurrentFill] = useState(0);
 
@@ -684,19 +680,6 @@ export const SkillArtWindow = ({
               }}
             >
               BACK_TO_MENU
-            </TerminalWindowButton>
-            <TerminalWindowButton
-              key="back-to-menu-and-contact"
-              bgColor="yellow"
-              href={contactHref}
-              onClick={() => {
-                event('cta', {
-                  type: 'email',
-                  location: 'about',
-                });
-              }}
-            >
-              CONTACT_ME
             </TerminalWindowButton>
           </nav>
         </TerminalWindow>

@@ -20,7 +20,6 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  ignorePatterns: ['generatedSanitySchemaTypes.ts'],
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'comma-dangle': 'off',

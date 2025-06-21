@@ -3,7 +3,6 @@ import { useInterval } from 'usehooks-ts';
 import { event } from 'nextjs-google-analytics';
 import { CustomCursorHover, CustomCursorState } from './CustomCursor';
 import { useParamOnLoad } from './useParamOnLoad';
-import { contactHref, linkedInHref, twitterHref } from './contactHref';
 import { useSceneController } from './SceneController';
 import MailIconSvg from './svg/MailIconSvg';
 import ComputerIcon from './svg/ComputerIcon'
@@ -120,52 +119,6 @@ export const CTA = () => {
           }
         `}
       </style>
-      <CustomCursorHover
-        cursor="contact"
-        onMouseEnter={onFocus}
-        onMouseLeave={onBlur}
-      >
-        <a
-          href={contactHref}
-          target="_blank"
-          rel="noreferrer"
-          className={`
-            block fixed top-0 left-0 text-[min(4vw,1.3rem)]  pr-[1rem] py-[1rem] font-mono tracking-wide pl-[0.5em]
-            ${showStats ? '' : 'z-[88888888]'}
-            ${showCTAs ? '' : 'translate-y-[-200%]'} transition-all duration-300
-            ${hover ? 'scale-[1.3]' : ''}  origin-top-left
-          `}
-          style={{
-            filter:
-              'drop-shadow(0 0 0.2rem black) drop-shadow(0 0 0.2rem black)',
-            background: bgColor,
-            color: textColor,
-            stroke: textColor,
-          }}
-          tabIndex={showCTAs ? 0 : -1}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onClick={() => {
-            event('cta', {
-              type: 'email',
-              location: 'nav',
-            });
-          }}
-        >
-          <h2 className="sr-only">Contact</h2>
-          <span className="tracking-[-0.01em] flex gap-[0.75em] underline decoration-2 underline-offset-[6px]">
-            {ctas[ctaIndex] ?? (
-              <span>
-                hello
-                <span className="text-[0.7em]">&nbsp;</span>
-                <span>@</span>
-                <span className="text-[0.7em]">&nbsp;</span>
-                platformtribe.exe
-              </span>
-            )}
-          </span>
-        </a>
-      </CustomCursorHover>
       {showBg && (
         <div
           className="top-0 left-0 fixed w-full h-full overflow-hidden z-[-1] text-[2vw] font-mono text-white break-all opacity-30"

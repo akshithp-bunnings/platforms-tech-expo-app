@@ -2,10 +2,9 @@
 import React, { ReactNode } from 'react';
 import { Html } from '@react-three/drei';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Project } from '../generatedSanitySchemaTypes';
 import { CoordArray } from './CoordArray';
 import {
-  ProjectHeader, ProjectBody,
+  ProjectHeader, ProjectBody, Project
 } from './ProjectContent';
 import { CustomCursorHover } from './CustomCursor';
 import { useBreakpoints } from './useBreakpoints';

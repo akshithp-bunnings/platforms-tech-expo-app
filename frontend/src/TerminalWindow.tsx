@@ -24,6 +24,8 @@ export const TerminalWindow = ({
   wrapperClassName?: string;
   draggableByTitleBarOnly?: boolean;
   noCloseButton?: boolean;
+  withMinimize?: boolean;
+  withMaximize?: boolean;
 }) => {
   const showWindow = useTrueAfterDelay(delay);
   const breakpoints = useBreakpoints();

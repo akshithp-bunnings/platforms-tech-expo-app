@@ -6,7 +6,7 @@ import { Color, MeshBasicMaterial } from 'three';
 import { useInterval } from 'usehooks-ts';
 import { config } from '@react-spring/three';
 import { Text } from '@react-three/drei';
-import { Project } from '../generatedSanitySchemaTypes';
+import { Project } from './ProjectContent';
 import colors from './colors';
 import { CoordArray } from './CoordArray';
 import { Scribble } from './Scribble';

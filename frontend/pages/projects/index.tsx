@@ -1,10 +1,10 @@
 // import React from 'react';
 import type { InferGetStaticPropsType, NextPage } from 'next';
 import { SceneName } from '../../src/SceneController';
-import { authorizedSanityExperimentalTypesafeClient } from '../../src/sanity/sanityClient';
+import { getSiteData } from '../../src/SiteData';
 
 export async function getStaticProps() {
-  const projects = await authorizedSanityExperimentalTypesafeClient.getAll('project');
+  const { projects } = await getSiteData();
   const scene:SceneName = 'projects';
 
   return {

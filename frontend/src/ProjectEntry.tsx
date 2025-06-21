@@ -11,7 +11,7 @@ import { animated, config, useSpring } from '@react-spring/three';
 import { RoundedBoxGeometry } from 'three-stdlib';
 import { MeshDistortMaterial } from '@react-three/drei';
 import { event } from 'nextjs-google-analytics';
-import { Project } from '../generatedSanitySchemaTypes';
+import { Project } from './ProjectContent';
 import { CoffeeVideoMaterial } from './CoffeeVideoMaterial';
 import { ThreeButton } from './ThreeButton';
 import colors from './colors';
