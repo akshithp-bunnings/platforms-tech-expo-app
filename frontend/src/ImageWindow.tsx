@@ -18,7 +18,6 @@ export const ImageWindow = ({
       src={srcs[0]}
       layout="fill"
       objectFit="cover"
-      placeholder="blur"
       objectPosition={String(positions[0])}
       alt={alts[0]}
       className="pointer-events-none"

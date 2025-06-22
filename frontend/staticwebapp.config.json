@@ -1,0 +1,28 @@
+{
+    "routes": [
+      {
+        "route": "/*",
+        "serve": "/index.html",
+        "statusCode": 200
+      }
+    ],
+    "navigationFallback": {
+      "rewrite": "/index.html",
+      "exclude": ["/images/*.{png,jpg,gif,webp}", "/videos/*", "/css/*", "/js/*"]
+    },
+    "globalHeaders": {
+      "cache-control": "must-revalidate, max-age=3600",
+      "Content-Security-Policy": "default-src 'self' 'unsafe-inline' 'unsafe-eval' blob: data:; connect-src 'self' *.azure-api.net; img-src 'self' blob: data:; media-src 'self' blob: data:;"
+    },
+    "mimeTypes": {
+      ".json": "application/json",
+      ".glb": "model/gltf-binary",
+      ".gltf": "model/gltf+json"
+    },
+    "responseOverrides": {
+      "404": {
+        "rewrite": "/index.html",
+        "statusCode": 200
+      }
+    }
+  }

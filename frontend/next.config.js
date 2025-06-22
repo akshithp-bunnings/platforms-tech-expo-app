@@ -1,11 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Essential for Azure SWA
+  output: 'export',
   images: {
     unoptimized: true
   },
   optimizeFonts: false,
-  // Add the following redirect configuration
+  eslint: {
+    ignoreDuringBuilds: true
+  },
+  // Fix Three.js transpilation issues
+  transpilePackages: ['three'],
   async redirects() {
     return [
       {
