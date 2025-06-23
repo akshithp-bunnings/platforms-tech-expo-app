@@ -11,14 +11,14 @@ import { CustomCursorHover } from './CustomCursor';
 import { SceneName, useSceneController } from './SceneController';
 import { Typewriter, TIME_PER_CHAR } from './Typewriter';
 import { useBreakpoints } from './useBreakpoints';
-import { SkillArtWindow } from './SkillArtWindow';
+// import { SkillArtWindow } from './SkillArtWindow';
 import { SlideName } from './SlideName';
 import { ImageWindow } from './ImageWindow';
 import { TextWindow } from './TextWindow';
 import { TerminalButton } from './TerminalButton';
 // TestimonialsWindow import removed
-import colors from './colors';
-import { TerminalWindowButton } from './TerminalWindowButton';
+// import colors from './colors';
+// import { TerminalWindowButton } from './TerminalWindowButton';
 import { aboutContent } from './aboutContent';
 import teamimage from '../public/teamMemberImages/platform_gang.png'
 import { TeamMemberWindow } from './TeamMemberWindow';

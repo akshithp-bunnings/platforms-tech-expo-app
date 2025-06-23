@@ -1,5 +1,3 @@
-import stefImage from '../public/images/stef.jpg';
-import jpImage from '../public/images/jp.jpg';
 import ahmedImage from '../public/teamMemberImages/ahmedImage.png'
 import amalImage from '../public/teamMemberImages/amalImage.png';
 import aravindImage from '../public/teamMemberImages/aravindImage.png';
@@ -11,10 +9,8 @@ import kartikImages from '../public/teamMemberImages/kartikImages.png';
 import maiImage from '../public/teamMemberImages/maiImage.png';
 import michaelImge from '../public/teamMemberImages/michaelImage.png';
 import mertImage from '../public/teamMemberImages/mertImage.png';
-import michaelImage from '../public/teamMemberImages/michaelImage.png';
 import priyankaImage from '../public/teamMemberImages/priyankaImage.png';
 import rajImage from '../public/teamMemberImages/rajImage.png';
-import akImage from '../public/teamMemberImages/akImage.png'
 
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable max-len */
@@ -32,12 +28,7 @@ export const aboutContent = {
       photo: ahmedImage,
       description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
     },
-    {
-      name: "AK",
-      title: "Graduate Engineer (The Rookie👶)",
-      photo: akImage,
-      description: "Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation."
-    },
+
     {
       name: "Amal",
       title: "Senior DevOps Engineer (The Explorer)🧐",
