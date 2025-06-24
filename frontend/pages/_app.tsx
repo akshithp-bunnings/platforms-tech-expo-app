@@ -23,34 +23,31 @@ function MyApp({ Component, pageProps }: AppProps) {
   //   console.log('focused on', e.target);
   // });
 
-  const title = 'Bryant Smith, Creative Dev';
-  const description = 'I help awesome designers (like you) build their wildest dreams.';
-  const url = 'https://bryantcodes.art';
+  const title = ' Platform Tribe';
+  const description = ' Platform Tribe | Tech Expo.';
 
   return (
     <>
       <DefaultSeo
         title={title}
         description={description}
-        canonical="https://bryantcodes.art"
         openGraph={{
-          url,
           title,
           description,
           type: 'website',
           images: [
             {
-              url: 'https://bryantcodes.art/images/social.png',
-              width: 2333,
-              height: 1313,
-              alt: 'Bryantcodes.art wordmark over colorful, crudely scribbled illustration of laptop displaying another crudely drawn illustration of a laptop.',
+              url: 'https://techexpo.example.com/images/social.png',
+              width: 1200,
+              height: 630,
+              alt: 'Platform Tribe Tech Expo preview image',
               type: 'image/png',
             },
           ],
-          site_name: 'bryantcodes.art',
+          site_name: 'Tech Expo',
         }}
         twitter={{
-          handle: '@bryantcodesart',
+          handle: '@platformtribe',
           cardType: 'summary_large_image',
         }}
       />
