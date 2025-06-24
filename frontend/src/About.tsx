@@ -1,7 +1,5 @@
 import { useFrame } from '@react-three/fiber';
-import React, {
-  useRef, useState,
-} from 'react';
+import React, { useRef, useState } from 'react';
 import { MathUtils, PerspectiveCamera } from 'three';
 import { useEventListener, useWindowSize } from 'usehooks-ts';
 import { Html } from '@react-three/drei';
@@ -14,25 +12,28 @@ import { useBreakpoints } from './useBreakpoints';
 // import { SkillArtWindow } from './SkillArtWindow';
 import { SlideName } from './SlideName';
 import { ImageWindow } from './ImageWindow';
-import { TextWindow } from './TextWindow';
+import { TextWindow } from './TextWindow'; // Keep for now, used in the transition
 import { TerminalButton } from './TerminalButton';
-// TestimonialsWindow import removed
+import { TestimonialsWindow } from './TestimonialsWindow'; // Re-added import
 // import colors from './colors';
-// import { TerminalWindowButton } from './TerminalWindowButton';
+import { TerminalWindowButton } from './TerminalWindowButton';
 import { aboutContent } from './aboutContent';
-import teamimage from '../public/teamMemberImages/platform_gang.png'
+import teamimage from '../public/teamMemberImages/platform_gang.png';
 import { TeamMemberWindow } from './TeamMemberWindow';
-// Removed hailey image since it was used in testimonials section
 
 export const Slides = ({
-  slide, setScene, setSlide,
-}:{
-  slide:SlideName,
-  setScene:(_scene:SceneName)=>void,
-  setSlide:(_slide:SlideName)=>void
+  slide,
+  setScene,
+  setSlide,
+}: {
+  slide: SlideName;
+  setScene: (_scene: SceneName) => void;
+  setSlide: (_slide: SlideName) => void;
 }) => {
   const breakpoints = useBreakpoints();
   const breakpoint = breakpoints.about;
+  // Add state to track which team's testimonials are selected
+  const [selectedTeamIndex, setSelectedTeamIndex] = useState(0);
 
   const { scene } = useSceneController();
 
@@ -45,9 +46,7 @@ export const Slides = ({
         <Typewriter delay={text1Delay} hideCaratAtEnd>
           {aboutContent.intro[0]}
         </Typewriter>
-        <Typewriter delay={text2Delay}>
-          {aboutContent.intro[1]}
-        </Typewriter>
+        <Typewriter delay={text2Delay}>{aboutContent.intro[1]}</Typewriter>
         <div className="grid place-items-center mt-[2em]">
           <TerminalButton
             onClick={() => {
@@ -67,64 +66,70 @@ export const Slides = ({
 
   return (
     <>
-      {/* Updated conditions to only check for mission or skills */}
-      {(slide === 'mission' || slide === 'skills') && (
+      {/* Updated to use testimonials window */}
+      {slide === 'mission' && (
         <div
           className={`
-          grid h-full
-          pointer-events-none
-          absolute top-0 left-0 w-full
-          ${breakpoints.about ? 'grid-cols-[65%_1fr]' : 'grid-rows-[max-content_1fr]'}
-        `}
+    grid h-full
+    pointer-events-none
+    absolute top-0 left-0 w-full
+    ${breakpoints.about ? 'grid-cols-[65%_1fr]' : 'grid-rows-[max-content_1fr]'}
+  `}
         >
-          <TextWindow
-            title="CORE_PLATFORMS.exe"
+          <TestimonialsWindow
+            title="TEAM_INFO.exe"
             className={`
-            relative self-baseline
-            ${breakpoints.about ? '' : `
-              w-[90%] max-w-[30em] justify-self-start
+            relative self-baseline pointer-events-auto
+            ${
+              breakpoints.about
+                ? 'max-w-[1000px] w-[120%] h-[85%]' // Increased height slightly
+                : `w-[95%] max-w-[40em] justify-self-start`
+            }
             `}
-            transition-transform duration-[1s]
-            ${slide === 'mission' ? '' : 'translate-x-[-80%] translate-y-[-40%]'}
-          `}
             delay={1000}
-            topColor="violet"
-            wrapperClassName="p-[1em]"
-            texts={aboutContent.mission}
-            buttonColor="pink"
-            buttonText="Want to meet the team?"
-            onClick={() => {
-              // Changed to go directly to skills
-              setSlide('skills');
-            }}
-            disabled={slide !== 'mission'}
-          />
+            topColor="cyan"
+            color="lime"
+          >
+            <div className="mt-4 text-center">
+              <TerminalButton
+                onClick={(teamIdx) => {
+                  if (typeof teamIdx === 'number') {
+                    setSelectedTeamIndex(teamIdx);
+                  }
+                  setSlide('skills');
+                }}
+                className="text-[0.8em] mt-2"
+              >
+                Meet the team →
+              </TerminalButton>
+            </div>
+          </TestimonialsWindow>
+
           <ImageWindow
             delay={300}
             title="PLATFORM_GANG.jpg"
             positions={['center']}
             topColor="yellow"
             className={`
-            ${breakpoints.about ? `
-             self-end min-h-[14em] h-[16em] ml-[-2em] mb-[1em] mr-[-2em]
-            ` : `
-              min-w-[300px]
-              aspect-[9/8]
-              justify-self-end  mt-[2em]
-            `}
-
-            transition-transform duration-[1s]
-            ${slide === 'mission' ? '' : 'translate-x-[20%] translate-y-[70%]'}
-          `}
+      ${
+        breakpoints.about
+          ? `
+       self-end min-h-[14em] h-[16em] ml-[2em] mb-[1em] mr-[-6em] 
+      `
+          : `
+        min-w-[300px]
+        aspect-[9/8]
+        justify-self-end mt-[2em]
+      `
+      }
+    `}
             srcs={[teamimage]}
-            alts={['Crayon illustration of Bryant from decades ago.']}
+            alts={['Platform Tribe team image']}
           />
         </div>
       )}
-      
-      {/* Testimonials section removed */}
-      
-      {(slide === 'skills') && (
+
+      {slide === 'skills' && (
         <div
           className={`
           absolute top-0 left-0 w-full h-full
@@ -133,22 +138,47 @@ export const Slides = ({
           pointer-events-none
         `}
         >
-          {/* <SkillArtWindow
-            className="w-full h-full"
-            title="PAINT_TO_SEE_THE_TEAM"
-            color="white"
-            topColor="white"
-            setScene={setScene}
-            setSlide={setSlide}
-          /> */}
           <TeamMemberWindow
             className="w-full h-full pointer-events-auto"
-            title="TEAM_MEMBERS.exe"
+            title={`${
+              aboutContent.testimonials[selectedTeamIndex]?.teamName ||
+              'TEAM_MEMBERS'
+            }.exe`}
             color="black"
             topColor="pink"
-            teamMembers={aboutContent.teamMembers}
+            teamMembers={aboutContent.teamMembers.filter((member) => {
+              // Filter team members based on the selected team
+              const teamName =
+                aboutContent.testimonials[selectedTeamIndex]?.teamName;
+              if (teamName === 'Core Platforms') {
+                return member.team === 'CorePlatforms';
+              } else if (teamName === 'ServiceOps') {
+                return (
+                  member.team === 'ServiceOps'
+                );
+              }
+              return false; // Don't show any if no match
+            })}
             setScene={setScene}
             setSlide={setSlide}
+            // Add team switching capability
+            teamSwitcher={
+              <div className="flex gap-2 mb-4">
+                {aboutContent.testimonials.map((team, idx) => (
+                  <button
+                    key={team.teamName}
+                    className={`px-4 py-2 font-mono ${
+                      selectedTeamIndex === idx
+                        ? 'bg-blue text-white'
+                        : 'text-gray-400 hover:bg-gray-700'
+                    }`}
+                    onClick={() => setSelectedTeamIndex(idx)}
+                  >
+                    {team.teamName}
+                  </button>
+                ))}
+              </div>
+            }
           />
         </div>
       )}
@@ -168,7 +198,7 @@ export function ComputerTerminal() {
   };
 
   // Position and size of plane that our div should cover as closely as possible
-  const position:CoordArray = [-1, 0.7, 1.8];
+  const position: CoordArray = [-1, 0.7, 1.8];
   // Increased the size slightly for better readability
   const planeSizeInWorldUnits = [2.7, 2.2];
 
@@ -197,14 +227,22 @@ export function ComputerTerminal() {
     const worldCameraWidth = worldCameraHeight * perspectiveCamera.aspect;
 
     /** Width of our plane in screen pixels */
-    const planeWidthInPixels = (planeSizeInWorldUnits[0] / worldCameraWidth) * windowSize.width;
+    const planeWidthInPixels =
+      (planeSizeInWorldUnits[0] / worldCameraWidth) * windowSize.width;
 
     /** Height of our plane in screen pixels */
-    const planeHeightInPixels = (planeSizeInWorldUnits[1] / worldCameraHeight) * windowSize.height;
+    const planeHeightInPixels =
+      (planeSizeInWorldUnits[1] / worldCameraHeight) * windowSize.height;
 
     // Apply sizing to our terminal div via CSS vars - increased scale factor
-    terminalDivRef.current.style.setProperty('--terminal-width', `min(${windowSize.width * 0.95}px, ${planeWidthInPixels * 1.1}px)`);
-    terminalDivRef.current.style.setProperty('--terminal-height', `min(90 * var(--vh), ${planeHeightInPixels * 1.1}px)`);
+    terminalDivRef.current.style.setProperty(
+      '--terminal-width',
+      `min(${windowSize.width * 0.95}px, ${planeWidthInPixels * 1.1}px)`
+    );
+    terminalDivRef.current.style.setProperty(
+      '--terminal-height',
+      `min(90 * var(--vh), ${planeHeightInPixels * 1.1}px)`
+    );
   });
 
   // Exit on escape key
@@ -218,10 +256,7 @@ export function ComputerTerminal() {
   });
 
   return (
-    <group
-      position={position}
-      rotation={[0, 0, Math.PI / 40]}
-    >
+    <group position={position} rotation={[0, 0, Math.PI / 40]}>
       <Html>
         <CustomCursorHover cursor="terminal">
           <div
@@ -238,25 +273,25 @@ export function ComputerTerminal() {
             <Slides slide={slide} setSlide={setSlide} setScene={setScene} />
 
             {slide !== 'intro' && (
-            <div
-              className={`absolute
+              <div
+                className={`absolute
                 text-[max(0.7em,16px)]
                 right-0
                 top-0
                 z-[-1]
               `}
-            >
-              <TerminalButton
-                onClick={() => {
-                  setScene('menu');
-                  setSlide('intro');
-                }}
-                delay={500}
-                className="font-mono"
               >
-                {breakpoints.about ? 'BACK_TO_MENU' : 'BACK'}
-              </TerminalButton>
-            </div>
+                <TerminalButton
+                  onClick={() => {
+                    setScene('menu');
+                    setSlide('intro');
+                  }}
+                  delay={500}
+                  className="font-mono"
+                >
+                  {breakpoints.about ? 'BACK_TO_MENU' : 'BACK'}
+                </TerminalButton>
+              </div>
             )}
           </div>
         </CustomCursorHover>

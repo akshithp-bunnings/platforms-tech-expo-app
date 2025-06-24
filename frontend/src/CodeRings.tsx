@@ -79,7 +79,7 @@ function createTextCanvas(): HTMLCanvasElement | null {
   let nextLine = chooseLine();
 
   /* the string to use to simulate the typer's carat */
-  const caratString = '░▒▓██';
+  const caratString = '░▒▓█▓▒░';
 
   const dark = false;
   // let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -107,7 +107,7 @@ function createTextCanvas(): HTMLCanvasElement | null {
     context.font = `${dark ? 400 : 200} ${FONT_SIZE}px 'Roboto Mono'`;
     context.textAlign = 'left';
     context.textBaseline = 'middle';
-    context.fillStyle = colors.white;
+    context.fillStyle = colors.grayCode;
     context.fillText(textToWrite, 0, canvas.height / 2);
   };
 
