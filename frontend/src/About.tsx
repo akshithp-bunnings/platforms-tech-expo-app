@@ -92,7 +92,8 @@ export const Slides = ({
           >
             <div className="mt-4 text-center">
               <TerminalButton
-                onClick={(teamIdx) => {
+                onClick={() => {
+                  const teamIdx = selectedTeamIndex; // Use the current selected team index
                   if (typeof teamIdx === 'number') {
                     setSelectedTeamIndex(teamIdx);
                   }
