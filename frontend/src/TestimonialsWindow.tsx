@@ -8,13 +8,11 @@ import { Typewriter } from './Typewriter';
 import { useBreakpoints } from './useBreakpoints';
 import { aboutContent } from './aboutContent';
 import { TerminalButton } from './TerminalButton';
+import { useDevicePerformance } from './useDevicePerformance';
 
 const { testimonials } = aboutContent;
 
 type Testimonial = (typeof testimonials)[number];
-
-// Manually decide which testimony should dictate window length
-const longestTestimonial = testimonials[0];
 
 // Helper function to split mission text into paragraphs
 const formatMissionText = (missionText: string) => {
@@ -24,15 +22,21 @@ const formatMissionText = (missionText: string) => {
     .filter((p) => p.length > 0);
 };
 
+// Manually decide which testimony should dictate window length
+const longestTestimonial = testimonials[0];
+
 export const QuoteFigure = ({
   testimonial,
   hidden = false,
+  optimizeForPerformance = false, // Add this new prop with default
 }: {
   testimonial: Testimonial;
   hidden?: boolean;
+  optimizeForPerformance?: boolean; // Add type definition
 }) => {
   // Get paragraphs by splitting the mission text
   const paragraphs = formatMissionText(testimonial.teamMission);
+  const devicePerformance = useDevicePerformance();
 
   return (
     <figure
@@ -44,9 +48,15 @@ export const QuoteFigure = ({
           // For hidden version (sizing), keep paragraphs separate
           paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)
         ) : (
-          // For visible version, use a single Typewriter for continuous flow
+          // For visible version, use animation based on performance settings
           <div className="text-black whitespace-pre-line">
-            <Typewriter timePerChar={2}>{paragraphs.join('\n\n')}</Typewriter>
+            {optimizeForPerformance || devicePerformance === 'low' ? (
+              // Skip animation on low-performance devices
+              <div>{paragraphs.join('\n\n')}</div>
+            ) : (
+              // Use animation on higher-performance devices
+              <Typewriter timePerChar={2}>{paragraphs.join('\n\n')}</Typewriter>
+            )}
           </div>
         )}
       </blockquote>
@@ -54,11 +64,14 @@ export const QuoteFigure = ({
   );
 };
 
+// Update the type definition to include the new prop
 export const TestimonialsWindow = ({
   children,
+  optimizeForPerformance = false, // Add the new prop with default value
   ...terminalWindowProps
 }: {
   children: ReactNode;
+  optimizeForPerformance?: boolean; // Add to type definition
 } & Omit<TerminalWindowProps, 'children'>) => {
   const [selectedTeamIndex, setSelectedTeamIndex] = useState(0);
   const breakpoints = useBreakpoints();
@@ -112,7 +125,10 @@ export const TestimonialsWindow = ({
         <div className="bg-[#bdffbd] text-[1em] p-[1.5em] grid min-h-[400px] flex-grow">
           {/* A hidden div with the longest testimonial which will be used to size */}
           <QuoteFigure testimonial={longestTestimonial} hidden />
-          <QuoteFigure testimonial={testimonial} />
+          <QuoteFigure 
+            testimonial={testimonial} 
+            optimizeForPerformance={optimizeForPerformance} // Pass the prop down
+          />
         </div>
 
         {/* Button to meet the team */}

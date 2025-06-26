@@ -46,7 +46,7 @@ export function Computer() {
     let delay = 0;
     setComputerTurningOn(true); setComputerOnButtonHovering(false);
     setTimeout(() => { setComputerOn(true); setComputerTurningOn(false); }, delay += 300);
-    setTimeout(() => { setCodeRingsVisible(true); }, delay);
+    setTimeout(() => { setCodeRingsVisible(false); }, delay);
   };
 
   useEffect(() => {

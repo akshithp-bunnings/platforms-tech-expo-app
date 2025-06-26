@@ -12,12 +12,15 @@ import { SiteData } from './SiteData';
 import { ProjectListing } from './ProjectListing';
 import { useBreakpoints } from './useBreakpoints';
 // import { useClearHover } from './CustomCursor';
+import { PerformanceLevel } from './useDevicePerformance';
 
 export function SceneDirector({
   siteData,
+  performanceLevel,
 }:
 {
   siteData:SiteData,
+  performanceLevel:PerformanceLevel;
 }) {
   const { startingScene, projects } = siteData;
 

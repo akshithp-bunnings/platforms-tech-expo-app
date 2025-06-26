@@ -16,6 +16,7 @@ import { useHasNoMouse } from './useHasNoMouse';
 import { useSceneController } from './SceneController';
 import { fontUrls } from './typography';
 import { BackgroundColorMaterial } from './ProjectBackgroundMaterial';
+import { useDevicePerformance } from './useDevicePerformance';
 
 export function ProjectListing({ active, projects, ...groupProps }:
   { active:boolean, projects: Project[] | null; } & GroupProps) {
@@ -26,6 +27,7 @@ export function ProjectListing({ active, projects, ...groupProps }:
   
   const nProjects = projects?.length ?? 0;
   const arcPerProject = projects ? ((Math.PI * 2) / nProjects) : 0;
+  const devicePerformance = useDevicePerformance();
 
   // Auto-hover functionality
   const [autoHover, setAutoHover] = useState(false);
@@ -52,11 +54,11 @@ export function ProjectListing({ active, projects, ...groupProps }:
   useInterval(() => {
     if (aProjectIsOpen || !active) return;
     
-    // Auto-hover for all devices, not just touch devices
+    // Auto-hover for all devices
     if (autoHover) {
       setHoveredIndex(((hoveredIndex ?? 0) + 1) % nProjects);
     }
-  }, 2000); // Maintain the same 2-second cycle interval
+  }, devicePerformance === 'low' ? 4000 : 2000);
 
   // Track user interaction with projects
   const handleUserInteraction = () => {

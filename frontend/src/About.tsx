@@ -20,6 +20,7 @@ import { TerminalWindowButton } from './TerminalWindowButton';
 import { aboutContent } from './aboutContent';
 import teamimage from '../public/teamMemberImages/platform_gang.png';
 import { TeamMemberWindow } from './TeamMemberWindow';
+import { useDevicePerformance } from './useDevicePerformance';
 
 export const Slides = ({
   slide,
@@ -30,6 +31,7 @@ export const Slides = ({
   setScene: (_scene: SceneName) => void;
   setSlide: (_slide: SlideName) => void;
 }) => {
+  const devicePerformance = useDevicePerformance();
   const breakpoints = useBreakpoints();
   const breakpoint = breakpoints.about;
   // Add state to track which team's testimonials are selected
@@ -86,9 +88,10 @@ export const Slides = ({
                 : `w-[95%] max-w-[40em] justify-self-start`
             }
             `}
-            delay={1000}
+            delay={devicePerformance === 'low' ? 500 : 1000}
             topColor="cyan"
             color="lime"
+            optimizeForPerformance={devicePerformance === 'low'}
           >
             <div className="mt-4 text-center">
               <TerminalButton
@@ -154,9 +157,7 @@ export const Slides = ({
               if (teamName === 'Core Platforms') {
                 return member.team === 'CorePlatforms';
               } else if (teamName === 'ServiceOps') {
-                return (
-                  member.team === 'ServiceOps'
-                );
+                return member.team === 'ServiceOps';
               }
               return false; // Don't show any if no match
             })}
