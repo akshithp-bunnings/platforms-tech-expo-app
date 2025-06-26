@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/prop-types */
-import React, { ReactNode, useMemo } from 'react';
+import React, { ReactNode } from 'react';
 import Image from 'next/image';
-import { event } from 'nextjs-google-analytics';
 import { CustomCursorHover, CustomCursorState } from './CustomCursor';
 import ExternalLinkIconSvg from './svg/ExternalLinkIconSvg';
+import { TerminalWindowButton } from './TerminalWindowButton';
 
 // Updated Project type that matches our JSON structure
 export type Project = {
@@ -22,8 +22,16 @@ export type Project = {
 };
 
 const ExternalLink = ({
-  href, cursor = 'external', children, onClick = () => {},
-}: { href: string; children: ReactNode; cursor?: CustomCursorState; onClick?: ()=>void}) => (
+  href,
+  cursor = 'external',
+  children,
+  onClick = () => {},
+}: {
+  href: string;
+  children: ReactNode;
+  cursor?: CustomCursorState;
+  onClick?: () => void;
+}) => (
   <CustomCursorHover cursor={cursor}>
     <a
       href={href}
@@ -36,35 +44,69 @@ const ExternalLink = ({
       onClick={onClick}
     >
       {children}
-      <span className="absolute top-0 grid w-6 h-full right-2 place-items-center fill-[currentColor]"><ExternalLinkIconSvg /></span>
+      <span className="absolute top-0 grid w-6 h-full right-2 place-items-center fill-[currentColor]">
+        <ExternalLinkIconSvg />
+      </span>
     </a>
   </CustomCursorHover>
 );
 
-const P = ({ children, className = '' }: { children: ReactNode; className?: string; }) => (<p className={`my-4 ${className}`}>{children}</p>);
+// Game button component specifically for Project Bootstrap
+export const GameButton = ({ projectTitle }: { projectTitle: string }) => {
+  // Only show for Project Bootstrap
+  if (!projectTitle.toLowerCase().includes('bootstrap')) {
+    return null;
+  }
 
-const H2 = ({ children }: { children: ReactNode; }) => (
-  <h2
-    className="mt-16 font-mono text-2xl"
-  >
-    {children}
-  </h2>
+  return (
+    <div className="my-8">
+      <CustomCursorHover cursor="external">
+        <a
+          href="https://happy-smoke-05ff7f200.1.azurestaticapps.net/"
+          rel="noreferrer"
+          className="block"
+          onClick={() => {}}
+        >
+          <TerminalWindowButton
+            color="yellow"
+            bgColor='black'
+            className="w-full py-4 text-2xl font-bold bg-transparent"
+          >
+            🎮 Play the Bootstrap Simulator Game! 🎮
+          </TerminalWindowButton>
+        </a>
+      </CustomCursorHover>
+    </div>
+  );
+};
+
+const P = ({
+  children,
+  className = '',
+}: {
+  children: ReactNode;
+  className?: string;
+}) => <p className={`my-4 ${className}`}>{children}</p>;
+
+const H2 = ({ children }: { children: ReactNode }) => (
+  <h2 className="mt-16 font-mono text-2xl">{children}</h2>
 );
 
-export const ProjectHeader = ({ project }: { project: Project; }) => (
+export const ProjectHeader = ({ project }: { project: Project }) => (
   <>
     <h1
       className="font-mono leading-[1] mb-6 mt-12"
       style={{
-        fontSize: (project?.title?.length ?? 0) > 15 ? 'clamp(35px,3.5vw,55px)' : 'clamp(35px,6vw,85px)',
+        fontSize:
+          (project?.title?.length ?? 0) > 15
+            ? 'clamp(35px,3.5vw,55px)'
+            : 'clamp(35px,6vw,85px)',
       }}
     >
       {project.title}
     </h1>
     {project.subTitle && (
-      <h2 className="font-mono text-2xl">
-        {project.subTitle}
-      </h2>
+      <h2 className="font-mono text-2xl">{project.subTitle}</h2>
     )}
     {project.client && (
       <dl className="mt-8 font-mono">
@@ -72,38 +114,56 @@ export const ProjectHeader = ({ project }: { project: Project; }) => (
         <dd>{project.client}</dd>
       </dl>
     )}
+    {/* Add game button for Project Bootstrap */}
+    <GameButton projectTitle={project.title} />
   </>
 );
 
-export const ProjectBody = ({ project }: { project: Project; }) => {
+export const ProjectBody = ({ project }: { project: Project }) => {
   if (!project?.body || !project.body.length) {
     return null;
   }
-  
+
   return (
     <div className="my-8 tracking-wide">
       {project.body.map((block, index) => {
         // Text blocks (paragraphs, headings)
         if (block._type === 'text') {
           if (block.style === 'h1') {
-            return <h1 className="text-3xl font-mono my-6" key={index}>{block.content}</h1>;
+            return (
+              <h1 className="text-3xl font-mono my-6" key={index}>
+                {block.content}
+              </h1>
+            );
           }
           if (block.style === 'h2') {
-            return <h2 className="text-2xl font-mono my-5" key={index}>{block.content}</h2>;
+            return (
+              <h2 className="text-2xl font-mono my-5" key={index}>
+                {block.content}
+              </h2>
+            );
           }
           if (block.style === 'h3') {
-            return <h3 className="text-xl font-mono my-4" key={index}>{block.content}</h3>;
+            return (
+              <h3 className="text-xl font-mono my-4" key={index}>
+                {block.content}
+              </h3>
+            );
           }
           // Default to paragraph
-          return <p className="my-4" key={index}>{block.content}</p>;
+          return (
+            <p className="my-4" key={index}>
+              {block.content}
+            </p>
+          );
         }
-        
+
         // Image blocks - Updated to use Next.js Image component
         if (block._type === 'image') {
           return (
             <figure key={index} className="my-8 ">
               <div className="relative w-full h-[350px]">
-                <Image 
+                <Image
                   src={block.url}
                   alt={block.alt || ''}
                   fill
@@ -112,31 +172,31 @@ export const ProjectBody = ({ project }: { project: Project; }) => {
                 />
               </div>
               {block.caption && (
-                <figcaption className="p-2 text-center text-lg">{block.caption}</figcaption>
+                <figcaption className="p-2 text-center text-lg">
+                  {block.caption}
+                </figcaption>
               )}
             </figure>
           );
         }
-        
+
         // Video blocks
         if (block._type === 'video') {
           return (
             <figure key={index} className="my-8">
-              <video
-                controls
-                poster={block.poster}
-                className="w-full h-auto"
-              >
+              <video controls poster={block.poster} className="w-full h-auto">
                 <source src={block.url} type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
               {block.caption && (
-                <figcaption className="p-2 text-center text-lg">{block.caption}</figcaption>
+                <figcaption className="p-2 text-center text-lg">
+                  {block.caption}
+                </figcaption>
               )}
             </figure>
           );
         }
-        
+
         return null;
       })}
     </div>
@@ -148,7 +208,9 @@ function renderSpans(spans: any[] = []) {
   return spans.map((span, i) => {
     // If it has a mark of type "link"
     if (span.marks?.includes('link') && span._key) {
-      const linkData = span.markDefs?.find((def: any) => def._key === span._key);
+      const linkData = span.markDefs?.find(
+        (def: any) => def._key === span._key
+      );
       if (linkData && linkData.href) {
         const target = linkData.href.startsWith('http') ? '_blank' : undefined;
         return (
@@ -164,7 +226,7 @@ function renderSpans(spans: any[] = []) {
         );
       }
     }
-    
+
     // Regular text
     return <span key={i}>{span.text}</span>;
   });

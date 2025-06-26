@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { ReactNode, useEffect, useState } from 'react';
-import Image from 'next/image';
 import { event } from 'nextjs-google-analytics';
 import { TerminalWindowProps } from './TerminalWindowProps';
 import { TerminalWindow } from './TerminalWindow';
