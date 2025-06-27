@@ -56,8 +56,8 @@
   },
   {
     "_id": "project3",
-    "title": "Gen AI Assistant",
-    "shortTitle": "Gen AI",
+    "title": "Digital AI Platform",
+    "shortTitle": "Bunnings AI",
     "slug": { "current": "genai" },
     "subTitle": "Helping teams with intelligent tools",
     "body": [
@@ -67,10 +67,10 @@
         "style": "normal"
       },
       {
-        "_type": "image",
-        "url": "/images/gen-ai-screenshot.png",
-        "alt": "Screenshot of Gen AI Assistant",
-        "caption": "Gen AI in action"
+        "_type": "video",
+        "url": "/videos/AI-Rag.mp4",
+        "poster": "/videos/project-bootstrap-demo-thumb.jpg",
+        "caption": "Bunnings AI in action"
       }
     ]
   },
@@ -79,12 +79,60 @@
     "title": "Traffic Lights Dashboard",
     "shortTitle": "Traffic Lights",
     "slug": { "current": "traffic-lights" },
-    "subTitle": "Visualizing dependency health",
+    "subTitle": "",
     "body": [
       {
         "_type": "text",
-        "content": "Built a dashboard that is using a red/amber/green indicator system.",
+        "content": "Synthetic Monitoring Migration",
+        "style": "h2"
+      },
+      {
+        "_type": "text",
+        "content": "We’ve fully migrated all Postman synthetic monitoring to Dynatrace. A Terraform module and Scalr pipeline were built to manage Dynatrace Synthetics as Infrastructure-as-Code (IaC), making it easier for developers to create and manage monitors. Currently, 37 synthetic monitors are in place, covering our production environment. Failures trigger alerts, and a central dashboard displays real-time status across all synthetics. ",
         "style": "normal"
+      },
+      {
+        "_type": "image",
+        "url": "/videos/dashboard.jpg",
+        "alt": "Architecture diagram showing project bootstrap flow",
+        "caption": "Dynatrace Synthetics Dashboard"
+      },
+      {
+        "_type": "text",
+        "content": "Digital Traffic Light Dashboard",
+        "style": "h2"
+      },
+      {
+        "_type": "text",
+        "content": "We developed a high-level dashboard to give a simple, at-a-glance view of Digital's operational health. The large traffic light shows the overall status of all Digital apps. Smaller lights break it down per app, each with links to detailed dashboards. A live event log shows the root cause behind any status change. This dashboard is the go-to landing page when investigating alerts or reported issues—making it easy to spot and drill into wider problems. ",
+        "style": "normal"
+      },
+      {
+        "_type": "text",
+        "content": "1. The large traffic light shows the overall status of all Digital apps.",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "2. Smaller lights break it down per app, each with links to detailed dashboards.",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "3. A live event log shows the root cause behind any status change.",
+        "style": "list-item"
+      },
+      {
+        "_type": "image",
+        "url": "/videos/trafficlight.png",
+        "alt": "Traffic lights dashboard",
+        "caption": "Dynatrace Traffic lights Dashboard"
+      },
+      {
+        "_type": "image",
+        "url": "/videos/events.png",
+        "alt": "Events",
+        "caption": "Events Table"
       }
     ]
   },
@@ -98,8 +146,19 @@
     "body": [
       {
         "_type": "text",
-        "content": "Onboarded and productionized new internal services with observability, CI/CD pipelines, and infrastructure validation using Terraform and GitLab.",
+        "content": "Synthetic Monitoring Migration",
+        "style": "h2"
+      },
+      {
+        "_type": "text",
+        "content": "We’ve fully migrated all Postman synthetic monitoring to Dynatrace. A Terraform module and Scalr pipeline were built to manage Dynatrace Synthetics as Infrastructure-as-Code (IaC), making it easier for developers to create and manage monitors. Currently, 37 synthetic monitors are in place, covering our production environment. Failures trigger alerts, and a central dashboard displays real-time status across all synthetics. ",
         "style": "normal"
+      },
+      {
+        "_type": "image",
+        "url": "/videos/dashboard.jpg",
+        "alt": "Architecture diagram showing project bootstrap flow",
+        "caption": "How Project Bootstrap works"
       }
     ]
   }

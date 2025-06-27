@@ -2,9 +2,11 @@
 /* eslint-disable react/prop-types */
 import React, { ReactNode } from 'react';
 import Image from 'next/image';
+import { event } from 'nextjs-google-analytics';
 import { CustomCursorHover, CustomCursorState } from './CustomCursor';
 import ExternalLinkIconSvg from './svg/ExternalLinkIconSvg';
 import { TerminalWindowButton } from './TerminalWindowButton';
+import { VideoPlayer } from './VideoPlayer';
 
 // Updated Project type that matches our JSON structure
 export type Project = {
@@ -65,11 +67,16 @@ export const GameButton = ({ projectTitle }: { projectTitle: string }) => {
           href="https://happy-smoke-05ff7f200.1.azurestaticapps.net/"
           rel="noreferrer"
           className="block"
-          onClick={() => {}}
+          onClick={() => {
+            event('game-button-clicked', {
+              project: 'Project Bootstrap',
+              url: 'https://happy-smoke-05ff7f200.1.azurestaticapps.net/'
+            });
+          }}
         >
           <TerminalWindowButton
             color="yellow"
-            bgColor='black'
+            bgColor="black"
             className="w-full py-4 text-2xl font-bold bg-transparent"
           >
             🎮 Play the Bootstrap Simulator Game! 🎮
@@ -150,6 +157,14 @@ export const ProjectBody = ({ project }: { project: Project }) => {
               </h3>
             );
           }
+          if (block.style === 'list-item') {
+            return (
+              <div key={index} className="ml-6 my-2 flex">
+                <div className="text-projectColor font-bold">{block.content.split(' ')[0]}</div>
+                <div className="ml-2">{block.content.substring(block.content.indexOf(' ') + 1)}</div>
+              </div>
+            );
+          }
           // Default to paragraph
           return (
             <p className="my-4" key={index}>
@@ -180,19 +195,15 @@ export const ProjectBody = ({ project }: { project: Project }) => {
           );
         }
 
-        // Video blocks
+        // Video blocks - Now using the VideoPlayer component
         if (block._type === 'video') {
           return (
             <figure key={index} className="my-8">
-              <video controls poster={block.poster} className="w-full h-auto">
-                <source src={block.url} type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              {block.caption && (
-                <figcaption className="p-2 text-center text-lg">
-                  {block.caption}
-                </figcaption>
-              )}
+              <VideoPlayer 
+                src={block.url} 
+                poster={block.poster}
+                caption={block.caption}
+              />
             </figure>
           );
         }
