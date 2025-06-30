@@ -5,6 +5,7 @@
     "shortTitle": "Project Bootstrap",
     "slug": { "current": "project-bootstrap" },
     "subTitle": "Accelerating project setup",
+    "team": "Core Platforms",
     "body": [
       {
         "_type": "text",
@@ -12,24 +13,13 @@
         "style": "h4"
       },
       {
-        "_type": "image",
-        "url": "/data-images/bootstrap-diagram.png",
-        "alt": "Architecture diagram showing project bootstrap flow",
-        "caption": "How Project Bootstrap works"
-      },
-      {
         "_type": "text",
-        "content": "Key features include:",
+        "content": "Ready for the show? Watch below",
         "style": "h2"
       },
       {
-        "_type": "text",
-        "content": "The system has drastically reduced setup time from 3 days to 20 minutes.",
-        "style": "normal"
-      },
-      {
         "_type": "video",
-        "url": "/videos/project-bootstrap-demo.mp4",
+        "url": "/videos/project-bootstrap/Project-Bootstrap-Video.mp4",
         "poster": "/videos/project-bootstrap-demo-thumb.jpg",
         "caption": "See it in action"
       }
@@ -40,17 +30,19 @@
     "title": "Multi-Region Load Balancing",
     "shortTitle": "Load Balancing",
     "slug": { "current": "multi-region" },
-    "subTitle": "High availability across geographies",
+    "subTitle": "Real-time disaster recovery",
+    "team": "Core Platforms",
     "body": [
       {
         "_type": "text",
-        "content": "Implemented a multi-region load balancing strategy using Azure Front Door to ensure Bunnings applications remain resilient and performant across geographies.",
+        "content": "Watch our Platform Squad reroute traffic from Sydney to Melbourne with zero downtime, turning disaster into a seamless ride.",
         "style": "normal"
       },
       {
-        "_type": "text",
-        "content": "Helps achieve near-zero downtime with auto-failover between primary and secondary regions.",
-        "style": "normal"
+        "_type": "video",
+        "url": "/videos/load-balancing/traffic-manager.mp4",
+        "poster": "/videos/project-bootstrap-demo-thumb.jpg",
+        "caption": "See it in action"
       }
     ]
   },
@@ -60,15 +52,16 @@
     "shortTitle": "Bunnings AI",
     "slug": { "current": "genai" },
     "subTitle": "Helping teams with intelligent tools",
+    "team": "Core Platforms",
     "body": [
       {
         "_type": "text",
-        "content": "Developed a GenAI assistant using Azure OpenAI and Azure Functions that answers team queries across Confluence and GitHub to boost productivity and onboarding speed.",
+        "content": "Explore how Bunnings' AI platforms enables secure, centralized OpenAI deployments and empowers tools like document intelligence and team chatbots.",
         "style": "normal"
       },
       {
         "_type": "video",
-        "url": "/videos/AI-Rag.mp4",
+        "url": "/videos/digital-ai/AI-Rag.mp4",
         "poster": "/videos/project-bootstrap-demo-thumb.jpg",
         "caption": "Bunnings AI in action"
       }
@@ -80,6 +73,7 @@
     "shortTitle": "Traffic Lights",
     "slug": { "current": "traffic-lights" },
     "subTitle": "",
+    "team": "Core Platforms",
     "body": [
       {
         "_type": "text",
@@ -88,12 +82,12 @@
       },
       {
         "_type": "text",
-        "content": "We’ve fully migrated all Postman synthetic monitoring to Dynatrace. A Terraform module and Scalr pipeline were built to manage Dynatrace Synthetics as Infrastructure-as-Code (IaC), making it easier for developers to create and manage monitors. Currently, 37 synthetic monitors are in place, covering our production environment. Failures trigger alerts, and a central dashboard displays real-time status across all synthetics. ",
+        "content": "We've completed the move from Postman to Dynatrace for synthetic monitoring! Now powered by a custom Terraform module and Scalr pipeline, our monitors are managed as Infrastructure-as-Code—making it a breeze for developers to spin up and maintain them. We’ve got 37 synthetic monitors keeping an eye on production, with real-time alerts and a central dashboard tracking it all. ",
         "style": "normal"
       },
       {
         "_type": "image",
-        "url": "/videos/dashboard.jpg",
+        "url": "/videos/traffic-light/dashboard.jpg",
         "alt": "Architecture diagram showing project bootstrap flow",
         "caption": "Dynatrace Synthetics Dashboard"
       },
@@ -104,7 +98,7 @@
       },
       {
         "_type": "text",
-        "content": "We developed a high-level dashboard to give a simple, at-a-glance view of Digital's operational health. The large traffic light shows the overall status of all Digital apps. Smaller lights break it down per app, each with links to detailed dashboards. A live event log shows the root cause behind any status change. This dashboard is the go-to landing page when investigating alerts or reported issues—making it easy to spot and drill into wider problems. ",
+        "content": "We built a high-level dashboard for a quick, at-a-glance view of Digital's health. ",
         "style": "normal"
       },
       {
@@ -123,14 +117,19 @@
         "style": "list-item"
       },
       {
+        "_type": "text",
+        "content": "This dashboard is the go-to landing page when investigating alerts or reported issues—making it easy to spot and drill into wider problems. ",
+        "style": "normal"
+      },
+      {
         "_type": "image",
-        "url": "/videos/trafficlight.png",
+        "url": "/videos/traffic-light/trafficlight.png",
         "alt": "Traffic lights dashboard",
         "caption": "Dynatrace Traffic lights Dashboard"
       },
       {
         "_type": "image",
-        "url": "/videos/events.png",
+        "url": "/videos/traffic-light/events.png",
         "alt": "Events",
         "caption": "Events Table"
       }
@@ -142,7 +141,7 @@
     "shortTitle": "New Services",
     "slug": { "current": "new-services" },
     "subTitle": "Making services production-ready",
-    "client": "Core Platforms",
+    "team": "Core Platforms",
     "body": [
       {
         "_type": "text",
@@ -161,5 +160,134 @@
         "caption": "How Project Bootstrap works"
       }
     ]
+  },{
+    "_id": "project6",
+    "title": "Change Templates",
+    "shortTitle": "Change Templates",
+    "slug": { "current": "change" },
+    "subTitle": "Fast, clear, scalable changes",
+    "team": "Service Ops",
+    "body": [
+      {
+        "_type": "text",
+        "content": "Automated Vendor Informational Changes",
+        "style": "h2"
+      },
+      {
+        "_type": "text",
+        "content": "1. Efficient Time Zone Conversion: Save valuable time by automating the conversion of time zones.",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "2. Clear Communication Interpretation: Simplify and accurately interpret confusing change communications.  ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "3. Enhanced Change Visibility: Improve visibility on changes from third-party providers, contributing to better Mean Time To Detect (MTTD) when issues arise.    ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "4. Seamlessly Scalable Solution: All within a solution that is seamlessly scalable using tools that Bunnings already has.   ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "Preapproved Change Requests",
+        "style": "h2"
+      },
+      {
+        "_type": "text",
+        "content": "1. On average, filling up change requests in ServiceNow can take up to 15 minutes, depending on complexity.",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "2. By having preapproved change templates for low risk changes, this has reduced approximately 60% of TM’s time in creating change requests.",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "3. Improved Compliance: Ensures that all changes adhere to compliance standards, reducing the risk of non-compliance penalties.",
+        "style": "list-item"
+      }
+    ]
+  }, {
+    "_id": "project7",
+    "title": "PagerDuty Roster Optimisation",
+    "shortTitle": "PagerDuty Roster",
+    "slug": { "current": "pagerduty" },
+    "subTitle": "Streamlined on-call management",
+    "team": "Service Ops",
+    "body": [
+      {
+        "_type": "text",
+        "content": "PagerDuty Roster Decommissions",
+        "style": "h2"
+      },
+      {
+        "_type": "text",
+        "content": "1. We constantly work to remove the complexity of troubleshooting our platform. ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "2. Through this work we have reduced the amount of on-call rosters required to keep our Digital platforms available. ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "3. We have brought down the amount of technical specialist rosters within the Digital department to 4. ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "4. The reduction in on-call support teams is saving us $46,000 p.a, with the additional value of letting our technical team members sleep soundly. ",
+        "style": "list-item"
+      }
+    ]
+  },
+  {
+    "_id": "project8",
+    "title": "Proactive Process Improvements Driving Real Impact",
+    "shortTitle": "Process Efficiency",
+    "slug": { "current": "process" },
+    "subTitle": "Reducing incidents, saving time, and keeping Digital teams focused.",
+    "team": "Service Ops",
+    "body": [
+      {
+        "_type": "text",
+        "content": "Processes Defined & Implemented, streamlining support and preventing incidents coming through to Digital teams. ",
+        "style": "h2"
+      },
+      {
+        "_type": "text",
+        "content": "1. OnePass account unlinking process defined - 1390+ TM hours saved FY25. ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "2. Online order stuck in Hybris - 800+ orders reviewed/remediated.",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "3. Removal of product during Price discrepancy - 20+ potential major incidents prevented . ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "4. MFA Administration for Retail accounts  ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "4. NZ Trade price mismatch process   ",
+        "style": "list-item"
+      }
+    ]
   }
+
 ]

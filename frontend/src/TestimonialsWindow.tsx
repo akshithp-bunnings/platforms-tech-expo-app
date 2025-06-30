@@ -66,13 +66,18 @@ export const QuoteFigure = ({
 // Update the type definition to include the new prop
 export const TestimonialsWindow = ({
   children,
-  optimizeForPerformance = false, // Add the new prop with default value
+  optimizeForPerformance = false,
+  selectedTeamIndex,        // Add these props to the function parameters
+  setSelectedTeamIndex,     // These should be passed from the parent component
   ...terminalWindowProps
 }: {
   children: ReactNode;
-  optimizeForPerformance?: boolean; // Add to type definition
+  optimizeForPerformance?: boolean;
+  selectedTeamIndex: number; // Add to type definition
+  setSelectedTeamIndex: (index: number) => void; // Add to type definition
 } & Omit<TerminalWindowProps, 'children'>) => {
-  const [selectedTeamIndex, setSelectedTeamIndex] = useState(0);
+  // Remove the local state since we're using props from parent
+  // const [selectedTeamIndex, setSelectedTeamIndex] = useState(0);
   const breakpoints = useBreakpoints();
   const breakpoint = breakpoints.about;
 
@@ -101,6 +106,7 @@ export const TestimonialsWindow = ({
               <li key={teamName} className="flex-1">
                 <button
                   onClick={() => {
+                    console.log('Tab clicked: setting index to', index); // Debug log
                     setSelectedTeamIndex(index);
                   }}
                   type="button"
@@ -126,7 +132,7 @@ export const TestimonialsWindow = ({
           <QuoteFigure testimonial={longestTestimonial} hidden />
           <QuoteFigure 
             testimonial={testimonial} 
-            optimizeForPerformance={optimizeForPerformance} // Pass the prop down
+            optimizeForPerformance={optimizeForPerformance}
           />
         </div>
 
@@ -136,7 +142,7 @@ export const TestimonialsWindow = ({
             onClick={() => {
               // Call the parent's handler and pass the selected team index
               if (childClickHandler) {
-                childClickHandler(selectedTeamIndex);
+                childClickHandler();
               }
             }}
             className="text-[1em] px-6 py-2 bg-violet"

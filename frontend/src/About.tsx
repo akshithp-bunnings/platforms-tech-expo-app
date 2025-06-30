@@ -21,6 +21,7 @@ import { aboutContent } from './aboutContent';
 import teamimage from '../public/teamMemberImages/platform_gang.png';
 import { TeamMemberWindow } from './TeamMemberWindow';
 import { useDevicePerformance } from './useDevicePerformance';
+import servicesOpsTeam from '../public/teamMemberImages/serviceops.png';
 
 export const Slides = ({
   slide,
@@ -72,34 +73,37 @@ export const Slides = ({
       {slide === 'mission' && (
         <div
           className={`
-    grid h-full
-    pointer-events-none
-    absolute top-0 left-0 w-full
-    ${breakpoints.about ? 'grid-cols-[65%_1fr]' : 'grid-rows-[max-content_1fr]'}
-  `}
+      grid h-full
+      pointer-events-none
+      absolute top-0 left-0 w-full
+      ${
+        breakpoints.about
+          ? 'grid-cols-[65%_1fr]'
+          : 'grid-rows-[max-content_1fr]'
+      }
+    `}
         >
           <TestimonialsWindow
             title="TEAM_INFO.exe"
             className={`
-            relative self-baseline pointer-events-auto
-            ${
-              breakpoints.about
-                ? 'max-w-[1000px] w-[120%] h-[85%]' // Increased height slightly
-                : `w-[95%] max-w-[40em] justify-self-start`
-            }
-            `}
+        relative self-baseline pointer-events-auto
+        ${
+          breakpoints.about
+            ? 'max-w-[1000px] w-[120%] h-[85%]'
+            : `w-[95%] max-w-[40em] justify-self-start`
+        }
+      `}
             delay={devicePerformance === 'low' ? 500 : 1000}
             topColor="cyan"
             color="lime"
             optimizeForPerformance={devicePerformance === 'low'}
+            selectedTeamIndex={selectedTeamIndex}
+            setSelectedTeamIndex={setSelectedTeamIndex}
           >
             <div className="mt-4 text-center">
               <TerminalButton
                 onClick={() => {
-                  const teamIdx = selectedTeamIndex; // Use the current selected team index
-                  if (typeof teamIdx === 'number') {
-                    setSelectedTeamIndex(teamIdx);
-                  }
+                  // No need to reset selectedTeamIndex here, just change slides
                   setSlide('skills');
                 }}
                 className="text-[0.8em] mt-2"
@@ -109,30 +113,45 @@ export const Slides = ({
             </div>
           </TestimonialsWindow>
 
-          <ImageWindow
-            delay={300}
-            title="PLATFORM_GANG.jpg"
-            positions={['center']}
-            topColor="yellow"
-            className={`
-      ${
-        breakpoints.about
-          ? `
-       self-end min-h-[14em] h-[16em] ml-[2em] mb-[1em] mr-[-6em] 
-      `
-          : `
-        min-w-[300px]
-        aspect-[9/8]
-        justify-self-end mt-[2em]
-      `
-      }
-    `}
-            srcs={[teamimage]}
-            alts={['Platform Tribe team image']}
-          />
+          {/* Core Platforms image - only show when Core Platforms tab is selected (index 0) */}
+          {selectedTeamIndex === 0 && (
+            <ImageWindow
+              delay={300}
+              title="PLATFORM_GANG.jpg"
+              positions={['center']}
+              topColor="yellow"
+              className={`
+          ${
+            breakpoints.about
+              ? `self-end min-h-[14em] h-[16em] ml-[2em] mb-[1em] mr-[-6em]`
+              : `min-w-[300px] aspect-[9/8] justify-self-end mt-[2em]`
+          }
+        `}
+              srcs={[teamimage]}
+              alts={['Platform Tribe team image']}
+            />
+          )}
+
+          {/* ServiceOps image - only show when ServiceOps tab is selected (index 1) */}
+          {selectedTeamIndex === 1 && (
+            <ImageWindow
+              delay={300}
+              title="SERVICE_OPS.jpg"
+              positions={['center']}
+              topColor="purple"
+              className={`
+          ${
+            breakpoints.about
+              ? `self-end min-h-[14em] h-[16em] ml-[2em] mb-[1em] mr-[-6em]`
+              : `min-w-[300px] aspect-[9/8] justify-self-end mt-[2em]`
+          }
+        `}
+              srcs={[servicesOpsTeam]}
+              alts={['Service Ops team image']}
+            />
+          )}
         </div>
       )}
-
       {slide === 'skills' && (
         <div
           className={`

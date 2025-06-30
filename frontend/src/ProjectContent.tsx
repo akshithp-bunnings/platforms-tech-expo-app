@@ -15,7 +15,7 @@ export type Project = {
   shortTitle?: string;
   slug: { current: string };
   subTitle?: string;
-  client?: string;
+  team?: string;
   description?: string;
   designers?: Array<{ name: string; url?: string }>;
   links?: Array<{ text: string; url: string }>;
@@ -115,10 +115,10 @@ export const ProjectHeader = ({ project }: { project: Project }) => (
     {project.subTitle && (
       <h2 className="font-mono text-2xl">{project.subTitle}</h2>
     )}
-    {project.client && (
+    {project.team && (
       <dl className="mt-8 font-mono">
-        <dt className="font-bold">Client</dt>
-        <dd>{project.client}</dd>
+        <dt className="font-bold">Team</dt>
+        <dd>{project.team}</dd>
       </dl>
     )}
     {/* Add game button for Project Bootstrap */}

@@ -29,7 +29,7 @@ export type Project = {
   shortTitle?: string;
   slug: { current: string };
   subTitle?: string;
-  client?: string;
+  team?: string;
   body: ContentBlock[];
   color1?: { hex: string };
 };
@@ -42,7 +42,7 @@ export type SiteData = {
 export async function getSiteData(): Promise<SiteData> {
   // Simply return the static data
   return {
-    startingScene: 'home',
+    startingScene: 'menu',
     projects: projectsData as Project[],
   };
 }

@@ -78,7 +78,7 @@ export function CoffeeCup() {
         size={1.8}
         position={[0.1, -0.1, -0.3]}
         lineWidth={0.4}
-        color={new Color(colors.cyan)}
+        color={new Color(colors.orange)}
         rotation={[Math.PI, 0, 0]}
         visible={projectButtonVisible2}
         drawSpringConfig={config.molasses}

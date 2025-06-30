@@ -3,14 +3,13 @@ import { getSiteData } from '../src/SiteData';
 import { SceneName } from '../src/SceneController';
 
 export async function getStaticProps() {
-  // Get projects from the static JSON file instead of Sanity
-  const { projects } = await getSiteData();
-  const scene: SceneName = 'intro';
+  // Get the full site data including the startingScene
+  const siteData = await getSiteData();
   
   return {
     props: {
-      projects,
-      scene,
+      projects: siteData.projects,
+      scene: siteData.startingScene, // Use the scene from SiteData instead of hardcoding 'intro'
     },
   };
 }
