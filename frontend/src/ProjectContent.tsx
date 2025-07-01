@@ -168,11 +168,11 @@ export const ProjectBody = ({ project }: { project: Project }) => {
           }
           if (block.style === 'h4') {
             return (
-              <h3
-                className=" font-mono my-4"
+              <h5
+                className="font-mono my-4 font-normal"
                 key={index}
                 dangerouslySetInnerHTML={{
-                  __html: parseMarkdown(block.content),
+                  __html: parseMarkdown(block.content).replace('<strong>', '<strong class="font-bold">'),
                 }}
               />
             );

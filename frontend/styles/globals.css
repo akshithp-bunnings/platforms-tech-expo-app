@@ -73,3 +73,13 @@ body.video-interaction .custom-cursor {
 .cursor-override video::-webkit-media-controls-volume-slider {
   cursor: pointer !important;
 }
+
+/* Ensure h4 elements don't have default bold styling */
+h3, h4 {
+  font-weight: normal;
+}
+
+/* Make strong tags explicitly bold */
+strong {
+  font-weight: 700 !important;
+}
