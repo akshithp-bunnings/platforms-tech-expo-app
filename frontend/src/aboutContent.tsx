@@ -36,7 +36,7 @@ export const aboutContent = {
     },
     {
       teamMission:
-        'We handle incident response, monitoring, capacity planning and maintenance — ensuring every API, site and integration stays up and performance.\n Our mission is to maximize availability, minimize disruptions and empower teams to innovate without interruption.',
+        'Service Operations ensures the reliable delivery and support of IT services, blending ITIL best practices with Agile ways of working. This approach balances structure and flexibility to improve service quality, adapt to changing needs, and drive continuous improvement. ',
       teamName: 'ServiceOps',
     },
   ],

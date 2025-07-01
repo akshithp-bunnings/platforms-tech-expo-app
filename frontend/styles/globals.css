@@ -41,3 +41,35 @@ div:has(> button[r3f-a11y='true']) {
   outline: 4px solid red; */
   pointer-events: none !important;
 }
+
+/* Enhanced video cursor handling */
+.cursor-override {
+  cursor: auto !important;
+  position: relative;
+  z-index: 50;
+}
+
+.cursor-override * {
+  cursor: auto !important;
+}
+
+.cursor-override video {
+  cursor: pointer !important;
+}
+
+/* Hide custom cursor during video interaction */
+body.video-interaction .custom-cursor {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Make video controls more accessible */
+.cursor-override video::-webkit-media-controls-panel {
+  cursor: auto !important;
+}
+
+.cursor-override video::-webkit-media-controls-play-button,
+.cursor-override video::-webkit-media-controls-timeline,
+.cursor-override video::-webkit-media-controls-volume-slider {
+  cursor: pointer !important;
+}
