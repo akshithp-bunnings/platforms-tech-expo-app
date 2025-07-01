@@ -40,7 +40,7 @@
       },
       {
         "_type": "video",
-        "url": "/videos/load-balancing/traffic-manager.mp4",
+        "url": "https://ahmedgeneralstorage.blob.core.windows.net/video/Traffic%20Manager-Kartik%20&%20Mai_720.mp4",
         "poster": "/videos/project-bootstrap-demo-thumb.jpg",
         "caption": "See it in action"
       }
