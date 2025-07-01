@@ -1,28 +1,40 @@
 {
-    "routes": [
-      {
-        "route": "/*",
-        "serve": "/index.html",
-        "statusCode": 200
-      }
-    ],
-    "navigationFallback": {
+  "routes": [
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
+    },
+    {
+      "route": "/videos/*.mp4",
+      "headers": {
+        "Content-Type": "video/mp4",
+        "Accept-Ranges": "bytes",
+        "Cache-Control": "public, max-age=604800"
+      },
+      "methods": ["GET", "HEAD", "OPTIONS"]
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/images/*.{png,jpg,gif,webp}", "/videos/*", "/css/*", "/js/*"]
+  },
+  "globalHeaders": {
+    "cache-control": "must-revalidate, max-age=3600",
+     "Access-Control-Allow-Origin": "*",
+    "content-security-policy": "default-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self';"
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".glb": "model/gltf-binary",
+    ".gltf": "model/gltf+json",
+    ".mp4": "video/mp4",
+    ".webm": "video/webm"
+  },
+  "responseOverrides": {
+    "404": {
       "rewrite": "/index.html",
-      "exclude": ["/images/*.{png,jpg,gif,webp}", "/videos/*", "/css/*", "/js/*"]
-    },
-    "globalHeaders": {
-      "cache-control": "must-revalidate, max-age=3600",
-      "content-security-policy": "default-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self';"
-    },
-    "mimeTypes": {
-      ".json": "application/json",
-      ".glb": "model/gltf-binary",
-      ".gltf": "model/gltf+json"
-    },
-    "responseOverrides": {
-      "404": {
-        "rewrite": "/index.html",
-        "statusCode": 200
-      }
+      "statusCode": 200
     }
   }
+}
