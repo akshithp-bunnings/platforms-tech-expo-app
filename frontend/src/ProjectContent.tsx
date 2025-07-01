@@ -70,7 +70,7 @@ export const GameButton = ({ projectTitle }: { projectTitle: string }) => {
           onClick={() => {
             event('game-button-clicked', {
               project: 'Project Bootstrap',
-              url: 'https://happy-smoke-05ff7f200.1.azurestaticapps.net/'
+              url: 'https://happy-smoke-05ff7f200.1.azurestaticapps.net/',
             });
           }}
         >
@@ -126,6 +126,11 @@ export const ProjectHeader = ({ project }: { project: Project }) => (
   </>
 );
 
+function parseMarkdown(text: string) {
+  // Handle bold text (**text**)
+  return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+}
+
 export const ProjectBody = ({ project }: { project: Project }) => {
   if (!project?.body || !project.body.length) {
     return null;
@@ -152,16 +157,62 @@ export const ProjectBody = ({ project }: { project: Project }) => {
           }
           if (block.style === 'h3') {
             return (
-              <h3 className="text-xl font-mono my-4" key={index}>
-                {block.content}
-              </h3>
+              <h3
+                className="text-xl font-mono my-4"
+                key={index}
+                dangerouslySetInnerHTML={{
+                  __html: parseMarkdown(block.content),
+                }}
+              />
+            );
+          }
+          if (block.style === 'h4') {
+            return (
+              <h3
+                className=" font-mono my-4"
+                key={index}
+                dangerouslySetInnerHTML={{
+                  __html: parseMarkdown(block.content),
+                }}
+              />
             );
           }
           if (block.style === 'list-item') {
+            // Process markdown FIRST, before trying to extract numbers
+            const processedContent = parseMarkdown(block.content);
+
+            // Check if there's a number at the beginning after HTML tags are stripped
+            const strippedContent = processedContent.replace(/<[^>]*>/g, '');
+            const hasNumberPrefix = /^\d+\./.test(strippedContent);
+
+            if (hasNumberPrefix) {
+              // For numbered items where the number might be outside bold tags
+              const match = processedContent.match(
+                /^(?:<strong>)?(\d+\.)(?:<\/strong>)?\s*(.*)/
+              );
+
+              if (match) {
+                const number = match[1]; // The number with period
+                const content = match[2]; // The rest of the content with any HTML tags
+
+                return (
+                  <div key={index} className="ml-6 my-2 flex">
+                    <div className="text-projectColor font-bold min-w-[2em]">
+                      {number.replace(/<\/?strong>/g, '')}
+                    </div>
+                    <div
+                      className="ml-2"
+                      dangerouslySetInnerHTML={{ __html: content }}
+                    />
+                  </div>
+                );
+              }
+            }
+
+            // Default case for any list item (including ones with bold numbers)
             return (
-              <div key={index} className="ml-6 my-2 flex">
-                <div className="text-projectColor font-bold">{block.content.split(' ')[0]}</div>
-                <div className="ml-2">{block.content.substring(block.content.indexOf(' ') + 1)}</div>
+              <div key={index} className="ml-6 my-2">
+                <div dangerouslySetInnerHTML={{ __html: processedContent }} />
               </div>
             );
           }
@@ -199,8 +250,8 @@ export const ProjectBody = ({ project }: { project: Project }) => {
         if (block._type === 'video') {
           return (
             <figure key={index} className="my-8">
-              <VideoPlayer 
-                src={block.url} 
+              <VideoPlayer
+                src={block.url}
                 poster={block.poster}
                 caption={block.caption}
               />

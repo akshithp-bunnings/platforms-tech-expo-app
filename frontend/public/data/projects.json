@@ -139,25 +139,165 @@
     "_id": "project5",
     "title": "New Services in Production",
     "shortTitle": "New Services",
-    "slug": { "current": "new-services" },
+    "slug": { "current": "new-services-white" },
     "subTitle": "Making services production-ready",
     "team": "Core Platforms",
     "body": [
       {
         "_type": "text",
-        "content": "Synthetic Monitoring Migration",
+        "content": "Unleash Platform",
+        "style": "h2"
+      },
+      {
+        "_type": "image",
+        "url": "/videos/new-services/unleash.png",
+        "alt": "Architecture diagram showing project bootstrap flow",
+        "caption": "Unleash Feature Flag Management Platform"
+      },
+      {
+        "_type": "text",
+        "content": "1. Formalise a single system to assert for feature state​​",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "2. Safe way for engineers to test in an isolated manner in production or dark launching 🌜​",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "3. Enable 🐦 canary releases​​",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "4. Have one system for operational toggles​​​",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "5. Democratize feature flag access, get non engineers involved in the product​​",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "Web Tribe",
         "style": "h2"
       },
       {
         "_type": "text",
-        "content": "We’ve fully migrated all Postman synthetic monitoring to Dynatrace. A Terraform module and Scalr pipeline were built to manage Dynatrace Synthetics as Infrastructure-as-Code (IaC), making it easier for developers to create and manage monitors. Currently, 37 synthetic monitors are in place, covering our production environment. Failures trigger alerts, and a central dashboard displays real-time status across all synthetics. ",
-        "style": "normal"
+        "content": "**Checkout Experience**: Designed to streamline and enhance the process of placing online orders  ",
+        "style": "h4"
       },
       {
-        "_type": "image",
-        "url": "/videos/dashboard.jpg",
-        "alt": "Architecture diagram showing project bootstrap flow",
-        "caption": "How Project Bootstrap works"
+        "_type": "text",
+        "content": "**Payment Experience**: Design and control the online purchase and redemption process for gift cards, supporting both physical and digital cards  ",
+        "style": "h4"
+      },
+      {
+        "_type": "text",
+        "content": "**Loyalty service**: Handle Flybuys and OnePass related functionality such as unlinking accounts​  ",
+        "style": "h4"
+      },
+      {
+        "_type": "text",
+        "content": "Range Tribe",
+        "style": "h2"
+      },
+      {
+        "_type": "text",
+        "content": "**Chabot Service**: The chatbot provides a conversational, in-store-like experience online, helping customers find products, DIY guides, and project advice quickly and easily.​  ",
+        "style": "h4"
+      },
+      {
+        "_type": "text",
+        "content": "1. Increased Conversion Rates & Order Value - Customers who engage with the chatbot have a conversion rate of 15.4%, which is 42% higher than the average for logged-in customers (10.8%) ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "2. The average order value for chatbot users is $226.78, which is 65% higher than the average order value for all logged-in customers. ​ ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "**3. Scalable Customer Support** The chatbot handles thousands of customer interactions per month (e.g., 10,061 messages in April from 4,848 customers)​",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "**GMC Monitoring**: Ensure the reliability, security, and operational health of the GMC-related services that support Bunnings’ online marketplace​​  ",
+        "style": "h4"
+      },
+      {
+        "_type": "text",
+        "content": "1. By proactively monitoring the Google Merchant Center integration, customers experience fewer disruptions and more consistent access to product data and services.​ ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "2. The Marketplace business team and other stakeholders are kept informed about the system’s production status​ ​ ",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "3. Automated alerts and clear escalation paths mean that any issues affecting customer experience can be identified and addressed quickly​.",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "**Order and Enquiry Service:** Enables commercial team members to stay on top of quotes and orders by keeping CRM and COS in sync in near real time​  ",
+        "style": "h4"
+      },
+      {
+        "_type": "text",
+        "content": "**Account Integration:** Create and keep Accounts in CRM up to date, providing Account Managers with the data to drive sales and Commercial support team members with the data to solve customer inquiries​ ",
+        "style": "h4"
+      },
+      {
+        "_type": "text",
+        "content": "**Consent Integration:** Capture and store customers consent   On how to use their data. Provide data governance team with a tool to effectively manage consent data and stay compliant​​​  ",
+        "style": "h4"
+      },
+      {
+        "_type": "text",
+        "content": "**Contract Service:** Enable Account Managers to effectively manage Commercial customer pricing​​  ",
+        "style": "h4"
+      },
+      {
+        "_type": "text",
+        "content": "App Tribe",
+        "style": "h2"
+      },
+      {
+        "_type": "text",
+        "content": "**List Experience:** Wishlist related functionalities inside Bunnings App​",
+        "style": "h4"
+      },
+      {
+        "_type": "text",
+        "content": "**Cafe Service:** Allows TMs to pre-order hot and cold drinks from their store’s cafe​​",
+        "style": "h4"
+      },
+      {
+        "_type": "text",
+        "content": "Function App Migration",
+        "style": "h2"
+      },
+      {
+        "_type": "text",
+        "content": "1. Azure function app infrastructure upgrade​",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "2. Migrating over 40 Azure functions​",
+        "style": "list-item"
+      },
+      {
+        "_type": "text",
+        "content": "3. Functions owned primarily by Suppliers & Products, Discover & Manage and Find & Choose squads​",
+        "style": "list-item"
       }
     ]
   },{
