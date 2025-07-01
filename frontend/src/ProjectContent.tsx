@@ -172,7 +172,7 @@ export const ProjectBody = ({ project }: { project: Project }) => {
                 className="font-mono my-4 font-light"
                 key={index}
                 dangerouslySetInnerHTML={{
-                  __html: parseMarkdown(block.content).replace('<strong>', '<strong class="font-bold">'),
+                  __html: parseMarkdown(block.content).replace('<strong>', '<strong class="font-bold underline">'),
                 }}
               />
             );
