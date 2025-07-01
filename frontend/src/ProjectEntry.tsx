@@ -3,7 +3,7 @@ import React, {
   useMemo, useRef, useState,
 } from 'react';
 import {
-  MathUtils, Mesh, Object3D,
+  MathUtils, Mesh, Object3D, Color,
 } from 'three';
 import { extend, ReactThreeFiber, useFrame } from '@react-three/fiber';
 import { useEventListener, useInterval } from 'usehooks-ts';
@@ -21,6 +21,7 @@ import { CoordArray } from './CoordArray';
 import { useHasNoMouse } from './useHasNoMouse';
 import { ProjectTitlePreview } from './ProjectTitlePreview';
 import { useSceneController } from './SceneController';
+import { PopcornKernelGeometry } from './PopcornKernel';
 
 const ROTATION_MAX_SPEED = 0.01;
 const MAX_WANDER_DISTANCE = 0.5;
@@ -33,16 +34,22 @@ const getRandomCubeOffset = ():CoordArray => [
 
 const circle = Math.PI * 2;
 
-extend({ RoundedBoxGeometry });
+
+// Explicitly extend both geometries here to ensure they're registered
+extend({ RoundedBoxGeometry, PopcornKernelGeometry });
 
 /* eslint-disable no-unused-vars */
 declare global {
   namespace JSX {
     interface IntrinsicElements {
       'roundedBoxGeometry': ReactThreeFiber.Object3DNode<RoundedBoxGeometry, typeof RoundedBoxGeometry>;
+      'popcornKernelGeometry': ReactThreeFiber.Object3DNode<PopcornKernelGeometry, typeof PopcornKernelGeometry>;
     }
   }
 }
+
+// Create a color for the popcorn kernel
+const popcornCreamColor = new Color('#FFFDD0');
 
 export const ProjectEntry = ({
   project,
@@ -119,9 +126,9 @@ export const ProjectEntry = ({
   const hasNoMouse = useHasNoMouse();
   let cubeScale = 1;
   if (hovering) {
-    cubeScale = 3;// hasNoMouse ? 1.5 : 2;
+    cubeScale = 3;
     if (breakpoints.projects) {
-      cubeScale = 3; // hasNoMouse ? 2 : 3;
+      cubeScale = 3;
     }
   }
   if (open) cubeScale = 0.8;
@@ -139,15 +146,11 @@ export const ProjectEntry = ({
     config: config.wobbly,
   });
 
-  // const anotherProjectIsOpen = someProjectIsOpen && !open;
-  // console.log(project.title, 'anotherProjectIsOpen', anotherProjectIsOpen);
-
   const { scene } = useSceneController();
 
   const active = hovering || open;
 
   useEventListener('keydown', (e) => {
-    // console.log('keydown', e.key);
     if (e.key === 'Escape' && open) {
       setOpen(false);
     }
@@ -166,7 +169,6 @@ export const ProjectEntry = ({
           description=""
           activationMsg=""
           cursor="open-project"
-          // debug
           onClick={() => {
             setOpen(true);
             event('project-opened', {
@@ -194,7 +196,7 @@ export const ProjectEntry = ({
               attach="geometry"
             />
             <MeshDistortMaterial
-              color={colors.cyan}
+              color={colors.orange}
               speed={6}
               radius={1}
               distort={0.5}
@@ -215,16 +217,26 @@ export const ProjectEntry = ({
           <mesh
             ref={cubeRef as Ref<Mesh>}
             renderOrder={active ? 1 : 0}
+            scale={[0.7, 0.7, 0.7]} // Add this scale property
           >
-            <roundedBoxGeometry
-              args={[1, 1, 1, 4, 0.1]}
-              attach="geometry"
-            />
-            <CoffeeVideoMaterial
-              videoSrc={`/videos/${project?.slug?.current}.mp4`}
-              thumbSrc={`/videos/${project?.slug?.current}-thumb.jpg`}
-              active={active}
-            />
+            {/* Use popcorn kernel geometry instead of rounded box */}
+            <popcornKernelGeometry args={[1, 3]} attach="geometry" />
+            
+            {/* Conditionally render either the video material when active or a cream-colored popcorn material */}
+            {active ? (
+              <CoffeeVideoMaterial
+                videoSrc={`/videos/${project?.slug?.current}.mp4`}
+                thumbSrc={`/videos/${project?.slug?.current}-thumb.jpg`}
+                active={active}
+              />
+            ) : (
+              <meshStandardMaterial 
+                color={popcornCreamColor}
+                roughness={0.7} 
+                metalness={0.1}
+                flatShading={true} // Add some texture
+              />
+            )}
           </mesh>
         </animated.group>
       </animated.group>
