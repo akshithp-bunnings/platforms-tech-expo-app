@@ -40,7 +40,7 @@
       },
       {
         "_type": "video",
-        "url": "https://ahmedgeneralstorage.blob.core.windows.net/video/Traffic%20Manager-Kartik%20&%20Mai_720.mp4",
+        "url": "/videos/traffic-manager/traffic.mp4",
         "poster": "/videos/project-bootstrap-demo-thumb.jpg",
         "caption": "See it in action"
       }
