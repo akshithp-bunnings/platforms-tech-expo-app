@@ -1,11 +1,6 @@
 {
   "routes": [
     {
-      "route": "/*",
-      "serve": "/index.html",
-      "statusCode": 200
-    },
-    {
       "route": "/videos/*.mp4",
       "headers": {
         "Content-Type": "video/mp4",
@@ -13,6 +8,11 @@
         "Cache-Control": "public, max-age=604800"
       },
       "methods": ["GET", "HEAD", "OPTIONS"]
+    },
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
     }
   ],
   "navigationFallback": {
@@ -21,7 +21,7 @@
   },
   "globalHeaders": {
     "cache-control": "must-revalidate, max-age=3600",
-     "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": "*",
     "content-security-policy": "default-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self';"
   },
   "mimeTypes": {
