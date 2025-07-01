@@ -10,6 +10,13 @@
       "methods": ["GET", "HEAD", "OPTIONS"]
     },
     {
+      "route": "/popcorn/*.svg",
+      "headers": {
+        "Content-Type": "image/svg+xml",
+        "Cache-Control": "public, max-age=604800"
+      }
+    },
+    {
       "route": "/*",
       "serve": "/index.html",
       "statusCode": 200
@@ -17,7 +24,7 @@
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/images/*.{png,jpg,gif,webp}", "/videos/*", "/css/*", "/js/*"]
+    "exclude": ["/images/*.{png,jpg,gif,webp}", "/videos/*", "/popcorn/*", "/css/*", "/js/*"]
   },
   "globalHeaders": {
     "cache-control": "must-revalidate, max-age=3600",
@@ -29,7 +36,9 @@
     ".glb": "model/gltf-binary",
     ".gltf": "model/gltf+json",
     ".mp4": "video/mp4",
-    ".webm": "video/webm"
+    ".webm": "video/webm",
+    ".png": "image/png",
+    ".svg": "image/svg+xml"
   },
   "responseOverrides": {
     "404": {

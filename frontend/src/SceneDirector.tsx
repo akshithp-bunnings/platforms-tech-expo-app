@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react';
 import { Text } from '@react-three/drei';
-// import { useControls } from 'leva';
 import { CameraController } from './CameraController';
 import { BackgroundScribbles } from './BackgroundScribbles';
 import { Computer } from './Computer';
-import { CoffeeCup } from './CoffeeCup';
+import { PopcornBag } from './PopcornBag'; // Changed from CoffeeCup
 import { CoordArray } from './CoordArray';
 import { useSceneController } from './SceneController';
-// import { routerLog } from './loggers';
 import { SiteData } from './SiteData';
 import { ProjectListing } from './ProjectListing';
 import { useBreakpoints } from './useBreakpoints';
-// import { useClearHover } from './CustomCursor';
 import { PerformanceLevel } from './useDevicePerformance';
 
 export function SceneDirector({
@@ -28,20 +25,16 @@ export function SceneDirector({
   useEffect(() => {
     setScene(startingScene);
   }, [setScene, startingScene]);
-  // const [scene, _setScene] = useState(startingScene);
-  // const setScene = (newScene:SceneName) => { _setScene(newScene); clearCursor(); };
 
   const breakpoints = useBreakpoints();
 
-  const showCoffeeCup = scene !== 'intro' && scene !== 'start';
+  const showPopcornBag = scene !== 'intro' && scene !== 'start';
 
   const projectListingPosition = [0, breakpoints.projects ? -12 : -11, 1];
 
   let stagePosition = [-1, 0, 3];
   let stageSize = [15, 15];
-  // if (breakpoints.menu) {
-  //   stageSize = [15, 15];
-  // }
+  
   if (scene === 'start') {
     stagePosition = [-1, 0, 3];
     stageSize = [5, 4];
@@ -105,13 +98,11 @@ export function SceneDirector({
       <CameraController
         stagePosition={stagePosition as CoordArray}
         stageSize={stageSize as [number, number]}
-        // debug
         controllable={scene !== 'project-open' && scene !== 'about'}
       />
       <BackgroundScribbles />
       <Computer />
-      {showCoffeeCup && <CoffeeCup />}
-      {/* {showNotebook && <Notebook />} */}
+      {showPopcornBag && <PopcornBag />}
       <ProjectListing
         projects={projects}
         position={projectListingPosition as CoordArray}

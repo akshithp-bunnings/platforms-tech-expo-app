@@ -14,6 +14,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "paths": {
+      "three/examples/jsm/loaders/SVGLoader": ["node_modules/three/examples/jsm/loaders/SVGLoader"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/spoofData.mjs", "src/PausableVideoTexture.js"],
   "exclude": ["node_modules", ".next"]
