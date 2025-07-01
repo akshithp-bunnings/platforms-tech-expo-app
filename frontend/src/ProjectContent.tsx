@@ -172,47 +172,74 @@ export const ProjectBody = ({ project }: { project: Project }) => {
                 className="font-mono my-4 font-light"
                 key={index}
                 dangerouslySetInnerHTML={{
-                  __html: parseMarkdown(block.content).replace('<strong>', '<strong class="font-bold underline">'),
+                  __html: parseMarkdown(block.content).replace(
+                    '<strong>',
+                    '<strong class="font-bold underline">'
+                  ),
                 }}
               />
             );
           }
+          // Only updating the list-item handling logic
+
           if (block.style === 'list-item') {
-            // Process markdown FIRST, before trying to extract numbers
-            const processedContent = parseMarkdown(block.content);
+            // Check if content uses direct HTML or markdown
+            const usesDirect = block.content.includes('<strong>');
+
+            // Apply appropriate formatting based on content type
+            let processedContent = usesDirect
+              ? block.content
+              : parseMarkdown(block.content);
 
             // Check if there's a number at the beginning after HTML tags are stripped
             const strippedContent = processedContent.replace(/<[^>]*>/g, '');
             const hasNumberPrefix = /^\d+\./.test(strippedContent);
 
             if (hasNumberPrefix) {
-              // For numbered items where the number might be outside bold tags
-              const match = processedContent.match(
-                /^(?:<strong>)?(\d+\.)(?:<\/strong>)?\s*(.*)/
-              );
+              // For numbered items, extract the number regardless of HTML tags
+              const numberMatch = strippedContent.match(/^(\d+\.)/);
+              const number = numberMatch ? numberMatch[1] : '';
 
-              if (match) {
-                const number = match[1]; // The number with period
-                const content = match[2]; // The rest of the content with any HTML tags
+              // Get the content after the number
+              const contentStartIndex =
+                block.content.indexOf(number) + number.length;
+              const restContent = block.content.substring(contentStartIndex);
 
-                return (
-                  <div key={index} className="ml-6 my-2 flex">
-                    <div className="text-projectColor font-bold min-w-[2em]">
-                      {number.replace(/<\/?strong>/g, '')}
-                    </div>
-                    <div
-                      className="ml-2"
-                      dangerouslySetInnerHTML={{ __html: content }}
-                    />
+              // Apply formatting to the content part
+              const formattedContent = usesDirect
+                ? restContent
+                : parseMarkdown(restContent);
+
+              return (
+                <div key={index} className="ml-6 my-2 flex">
+                  <div className="text-projectColor font-bold min-w-[2em]">
+                    {number}
                   </div>
-                );
-              }
+                  <div
+                    className="ml-2 font-light font-mono" // Add font-normal as base style
+                    dangerouslySetInnerHTML={{
+                      __html: formattedContent.replace(
+                        /<strong>/g,
+                        '<strong class="font-bold !font-bold underline">'
+                      ),
+                    }}
+                  />
+                </div>
+              );
             }
 
-            // Default case for any list item (including ones with bold numbers)
+            // Non-numbered list items
             return (
               <div key={index} className="ml-6 my-2">
-                <div dangerouslySetInnerHTML={{ __html: processedContent }} />
+                <div
+                  className="font-normal" // Add font-normal as base style
+                  dangerouslySetInnerHTML={{
+                    __html: processedContent.replace(
+                      '<strong>',
+                      '<strong class="font-bold">'
+                    ),
+                  }}
+                />
               </div>
             );
           }

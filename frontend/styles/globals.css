@@ -83,3 +83,9 @@ h3, h4 {
 strong {
   font-weight: 700 !important;
 }
+
+/* Ensure list items display strong tags correctly */
+[class*="list-item"] strong {
+  font-weight: 700 !important;
+  display: inline !important;
+}
