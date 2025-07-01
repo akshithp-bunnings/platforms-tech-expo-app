@@ -345,7 +345,7 @@
       },
       {
         "_type": "text",
-        "content": "2. By having preapproved change templates for low risk changes, this has reduced approximately 60% of TM’s time in creating change requests.",
+        "content": "2. By having preapproved change templates for low risk changes, this has <strong>reduced approximately 60% of TM’s time</strong> in creating change requests.",
         "style": "list-item"
       },
       {
@@ -369,22 +369,12 @@
       },
       {
         "_type": "text",
-        "content": "1. We constantly work to remove the complexity of troubleshooting our platform. ",
+        "content": "1. We have brought down the amount of technical specialist rosters within the Digital department to 4. ",
         "style": "list-item"
       },
       {
         "_type": "text",
-        "content": "2. Through this work we have reduced the amount of on-call rosters required to keep our Digital platforms available. ",
-        "style": "list-item"
-      },
-      {
-        "_type": "text",
-        "content": "3. We have brought down the amount of technical specialist rosters within the Digital department to 4. ",
-        "style": "list-item"
-      },
-      {
-        "_type": "text",
-        "content": "4. The reduction in on-call support teams is <strong>saving us $46,000 p.a</strong>, with the additional value of letting our technical team members sleep soundly.",
+        "content": "2. The reduction in on-call support teams is <strong>saving us $46K p.a</strong>, with the additional value of letting our technical team members sleep soundly.",
         "style": "list-item"
       }
     ]
@@ -404,17 +394,17 @@
       },
       {
         "_type": "text",
-        "content": "1. OnePass account unlinking process defined - 1390+ TM hours saved FY25. ",
+        "content": "1. OnePass account unlinking process defined - <strong>1390+ TM hours saved FY25.</strong>",
         "style": "list-item"
       },
       {
         "_type": "text",
-        "content": "2. Online order stuck in Hybris - 800+ orders reviewed/remediated.",
+        "content": "2. Online order stuck in Hybris - <strong>800+ orders reviewed/remediated.</strong>",
         "style": "list-item"
       },
       {
         "_type": "text",
-        "content": "3. Removal of product during Price discrepancy - 20+ potential major incidents prevented . ",
+        "content": "3. Removal of product during Price discrepancy - <strong>20+ potential major incidents prevented.</strong>",
         "style": "list-item"
       },
       {

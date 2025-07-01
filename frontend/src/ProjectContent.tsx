@@ -181,7 +181,6 @@ export const ProjectBody = ({ project }: { project: Project }) => {
             );
           }
           // Only updating the list-item handling logic
-
           if (block.style === 'list-item') {
             // Check if content uses direct HTML or markdown
             const usesDirect = block.content.includes('<strong>');
@@ -216,11 +215,11 @@ export const ProjectBody = ({ project }: { project: Project }) => {
                     {number}
                   </div>
                   <div
-                    className="ml-2 font-light font-mono" // Add font-normal as base style
+                    className="ml-2 font-light font-mono" // Base style
                     dangerouslySetInnerHTML={{
                       __html: formattedContent.replace(
                         /<strong>/g,
-                        '<strong class="font-bold !font-bold underline">'
+                        '<strong class="font-bold text-2xl !font-bold">'
                       ),
                     }}
                   />
@@ -232,11 +231,11 @@ export const ProjectBody = ({ project }: { project: Project }) => {
             return (
               <div key={index} className="ml-6 my-2">
                 <div
-                  className="font-normal" // Add font-normal as base style
+                  className="font-normal" // Base style
                   dangerouslySetInnerHTML={{
                     __html: processedContent.replace(
-                      '<strong>',
-                      '<strong class="font-bold">'
+                      /<strong>/g,
+                      '<strong class="font-bold text-3xl">'
                     ),
                   }}
                 />

@@ -15,6 +15,7 @@ import yogeshimage from '../public/teamMemberImages/yogeshImage.png';
 import trudiImage from '../public/teamMemberImages/trudiImage.png';
 import timImage from '../public/teamMemberImages/timImage.png';
 import eliImage from '../public/teamMemberImages/eliImage.png';
+import akImage from '../public/teamMemberImages/akImage.png'
 
 /* eslint-disable no-multiple-empty-lines */
 /* eslint-disable max-len */
@@ -46,6 +47,16 @@ export const aboutContent = {
       title: 'Senior DevOps Manager',
       aura: '(Mr Worldwide🌍)',
       photo: ahmedImage,
+      description:
+        'Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation.',
+      team: 'CorePlatforms',
+    },
+
+    {
+      name: 'AK',
+      title: 'Graduate Engineer',
+      aura: '(The Rookie👶)',
+      photo: akImage,
       description:
         'Ahmed leads the Core Platforms Squad, driving our mission to empower teams with reliable infrastructure and automation.',
       team: 'CorePlatforms',
