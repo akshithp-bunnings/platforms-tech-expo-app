@@ -250,10 +250,10 @@ export const ProjectBody = ({ project }: { project: Project }) => {
           );
         }
 
-        // Image blocks - Updated to use Next.js Image component
+        // Image blocks - Optimized Next.js Image component
         if (block._type === 'image') {
           return (
-            <figure key={index} className="my-8 ">
+            <figure key={index} className="my-8">
               <div className="relative w-full h-[350px]">
                 <Image
                   src={block.url}
@@ -261,6 +261,9 @@ export const ProjectBody = ({ project }: { project: Project }) => {
                   fill
                   style={{ objectFit: 'contain' }}
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                  quality={75}
+                  priority={false}
                 />
               </div>
               {block.caption && (

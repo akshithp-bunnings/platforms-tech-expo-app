@@ -1,11 +1,11 @@
-import React, {
-  Ref,
-  useMemo, useRef, useState,
-} from 'react';
+import React, { Ref, useMemo, useRef, useState, useEffect } from 'react';
+import { MathUtils, Mesh, Object3D, FrontSide } from 'three';
 import {
-  MathUtils, Mesh, Object3D,
-} from 'three';
-import { extend, ReactThreeFiber, useFrame } from '@react-three/fiber';
+  extend,
+  ReactThreeFiber,
+  useFrame,
+  useThree,
+} from '@react-three/fiber';
 import { useEventListener, useInterval } from 'usehooks-ts';
 import { animated, config, useSpring } from '@react-spring/three';
 import { RoundedBoxGeometry } from 'three-stdlib';
@@ -21,11 +21,12 @@ import { CoordArray } from './CoordArray';
 import { useHasNoMouse } from './useHasNoMouse';
 import { ProjectTitlePreview } from './ProjectTitlePreview';
 import { useSceneController } from './SceneController';
+import { useDevicePerformance } from './useDevicePerformance';
 
 const ROTATION_MAX_SPEED = 0.01;
 const MAX_WANDER_DISTANCE = 0.5;
 
-const getRandomCubeOffset = ():CoordArray => [
+const getRandomCubeOffset = (): CoordArray => [
   (Math.random() * 2 - 1) * MAX_WANDER_DISTANCE,
   (Math.random() * 2 - 1) * MAX_WANDER_DISTANCE,
   (Math.random() * 2 - 1) * MAX_WANDER_DISTANCE,
@@ -39,7 +40,10 @@ extend({ RoundedBoxGeometry });
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      'roundedBoxGeometry': ReactThreeFiber.Object3DNode<RoundedBoxGeometry, typeof RoundedBoxGeometry>;
+      roundedBoxGeometry: ReactThreeFiber.Object3DNode<
+        RoundedBoxGeometry,
+        typeof RoundedBoxGeometry
+      >;
     }
   }
 }
@@ -52,7 +56,7 @@ export const ProjectEntry = ({
   hovering,
   someProjectIsOpen,
   setHovering,
-}:{
+}: {
   project: Project;
   basePosition: CoordArray;
   open: boolean;
@@ -62,20 +66,38 @@ export const ProjectEntry = ({
   setHovering: (_hovering: boolean) => void;
 }) => {
   const breakpoints = useBreakpoints();
+  const devicePerformance = useDevicePerformance();
+  const { gl } = useThree();
 
-  const directionInterval = useMemo(() => Math.random() * 5000 + 2500, []);
-  const [cubeFloatingOffset, setCubeFloatingOffset] = useState<CoordArray>(
-    getRandomCubeOffset(),
+  // Only update directions at longer intervals on low-end devices
+  const directionInterval = useMemo(
+    () => (devicePerformance === 'low' ? 10000 : Math.random() * 5000 + 2500),
+    [devicePerformance]
   );
+
+  const [cubeFloatingOffset, setCubeFloatingOffset] = useState<CoordArray>(
+    getRandomCubeOffset()
+  );
+
+  // Only animate floating when visible and not on low-end devices
+  const shouldAnimateFloat = !open && (devicePerformance !== 'low' || hovering);
+
   const { animatedCubeFloatingOffset } = useSpring({
-    animatedCubeFloatingOffset: open ? [0, 0, 0] as CoordArray : cubeFloatingOffset,
+    animatedCubeFloatingOffset: open
+      ? ([0, 0, 0] as CoordArray)
+      : cubeFloatingOffset,
     config: {
       duration: open ? 100 : directionInterval,
+      // Skip the animation entirely for non-visible elements
+      immediate: !shouldAnimateFloat,
     },
   });
 
   useInterval(() => {
-    setCubeFloatingOffset(getRandomCubeOffset());
+    // Only update floating positions when necessary
+    if (shouldAnimateFloat) {
+      setCubeFloatingOffset(getRandomCubeOffset());
+    }
   }, directionInterval);
 
   const cubeRef = useRef<Mesh>();
@@ -86,9 +108,22 @@ export const ProjectEntry = ({
   });
 
   const objectAimedAtCamera = useMemo(() => new Object3D(), []);
+  const frameSkip = useRef(0);
+
+  // Reduce geometry complexity based on device performance
+  const cubeSegments = devicePerformance === 'low' ? 3 : 4;
+  const sphereSegments = devicePerformance === 'low' ? 10 : 20;
+
+  // Throttle animation updates based on device performance
+  const frameSkipRate = devicePerformance === 'low' ? 3 : 1;
 
   useFrame(({ camera }) => {
     if (!cubeRef.current) return;
+
+    // Skip frames for performance
+    frameSkip.current = (frameSkip.current + 1) % frameSkipRate;
+    if (frameSkip.current !== 0 && !hovering && !open) return;
+
     if (hovering || open) {
       cubeRef.current.getWorldPosition(objectAimedAtCamera.position);
       objectAimedAtCamera.lookAt(camera.position);
@@ -96,128 +131,142 @@ export const ProjectEntry = ({
       const { x, y, z } = cubeRef.current.rotation;
       cubeRef.current.rotation.x = MathUtils.lerp(
         x,
-        Math.round(x / (circle)) * circle + objectAimedAtCamera.rotation.x,
-        0.1,
+        Math.round(x / circle) * circle + objectAimedAtCamera.rotation.x,
+        0.1
       );
       cubeRef.current.rotation.y = MathUtils.lerp(
         y,
-        Math.round(y / (circle)) * circle + objectAimedAtCamera.rotation.y,
-        0.1,
+        Math.round(y / circle) * circle + objectAimedAtCamera.rotation.y,
+        0.1
       );
       cubeRef.current.rotation.z = MathUtils.lerp(
         z,
-        Math.round(z / (circle)) * circle + objectAimedAtCamera.rotation.z,
-        0.1,
+        Math.round(z / circle) * circle + objectAimedAtCamera.rotation.z,
+        0.1
       );
     } else {
-      cubeRef.current.rotation.x += rotationSpeeds.current.x;
-      cubeRef.current.rotation.y += rotationSpeeds.current.y;
-      cubeRef.current.rotation.z += rotationSpeeds.current.z;
+      // Only rotate cubes that are likely to be visible
+      const dist = camera.position.distanceTo(cubeRef.current.position);
+      if (dist < 15) {
+        cubeRef.current.rotation.x += rotationSpeeds.current.x;
+        cubeRef.current.rotation.y += rotationSpeeds.current.y;
+        cubeRef.current.rotation.z += rotationSpeeds.current.z;
+      }
     }
   });
 
   const hasNoMouse = useHasNoMouse();
   let cubeScale = 1;
   if (hovering) {
-    cubeScale = 3;// hasNoMouse ? 1.5 : 2;
+    cubeScale = devicePerformance === 'low' ? 2 : 3;
     if (breakpoints.projects) {
-      cubeScale = 3; // hasNoMouse ? 2 : 3;
+      cubeScale = devicePerformance === 'low' ? 2.5 : 3;
     }
   }
   if (open) cubeScale = 0.8;
 
-  const cubePosition:CoordArray = open
-    ? [0.2, 0, 4]
-    : basePosition;
+  const cubePosition: CoordArray = open ? [0.2, 0, 4] : basePosition;
+
   const { animatedCubePosition } = useSpring({
     animatedCubePosition: cubePosition,
-    config: config.stiff,
+    config:
+      devicePerformance === 'low'
+        ? { ...config.stiff, friction: 22 }
+        : config.stiff,
   });
 
   const { animatedCubeScale } = useSpring({
     animatedCubeScale: cubeScale,
-    config: config.wobbly,
+    config:
+      devicePerformance === 'low'
+        ? { ...config.wobbly, friction: 15 }
+        : config.wobbly,
   });
 
-  // const anotherProjectIsOpen = someProjectIsOpen && !open;
-  // console.log(project.title, 'anotherProjectIsOpen', anotherProjectIsOpen);
-
   const { scene } = useSceneController();
-
   const active = hovering || open;
 
+  // Reduced distort material complexity for better performance
+  const distortSpeed = devicePerformance === 'low' ? 3 : 6;
+  const distortAmount = devicePerformance === 'low' ? 0.3 : 0.5;
+
   useEventListener('keydown', (e) => {
-    // console.log('keydown', e.key);
     if (e.key === 'Escape' && open) {
       setOpen(false);
     }
   });
 
+  // Prepare assets early when hovering to reduce lag when opening
+  useEffect(() => {
+    if (hovering && !open) {
+      // Preload the project HTML content
+      const img = new Image();
+      img.src = `/videos/${project?.slug?.current}-thumb.jpg`;
+
+      // Force GPU texture upload when hovering to prevent lag when opening
+      if (gl && gl.initTexture) {
+        const texture = gl.initTexture(img);
+        gl.renderLists.dispose();
+      }
+    }
+  }, [hovering, open, project?.slug?.current, gl]);
+
   return (
     <>
-      <group
-        position={basePosition}
-      >
+      <group position={basePosition}>
         {scene === 'projects' && !someProjectIsOpen && (
-        <ThreeButton
-          position={[0, 0, 0]}
-          width={2}
-          height={2}
-          description=""
-          activationMsg=""
-          cursor="open-project"
-          // debug
-          onClick={() => {
-            setOpen(true);
-            event('project-opened', {
-              project: project?.slug?.current ?? 'unset',
-            });
-          }}
-          onFocus={() => {
-            setHovering(true);
-          }}
-          onBlur={() => {
-            setHovering(false);
-          }}
-        />
+          <ThreeButton
+            position={[0, 0, 0]}
+            width={2}
+            height={2}
+            description=""
+            activationMsg=""
+            cursor="open-project"
+            onClick={() => {
+              setOpen(true);
+              event('project-opened', {
+                project: project?.slug?.current ?? 'unset',
+              });
+            }}
+            onFocus={() => {
+              setHovering(true);
+            }}
+            onBlur={() => {
+              setHovering(false);
+            }}
+          />
         )}
 
-        <animated.group
-          position={animatedCubeFloatingOffset}
-        >
-          <mesh
-            position={[0, 0, -0.2]}
-            scale={[1, 1, 0.1]}
-          >
-            <sphereBufferGeometry
-              args={[1, 20, 20]}
-              attach="geometry"
-            />
-            <MeshDistortMaterial
-              color={colors.cyan}
-              speed={6}
-              radius={1}
-              distort={0.5}
-              transparent
-              opacity={0.4}
-              roughness={0}
-            />
-          </mesh>
+        <animated.group position={animatedCubeFloatingOffset}>
+          {/* Only render glow effect when active or on medium+ performance devices */}
+          {(active || devicePerformance !== 'low') && (
+            <mesh position={[0, 0, -0.2]} scale={[1, 1, 0.1]}>
+              <sphereBufferGeometry
+                args={[1, sphereSegments, sphereSegments]}
+                attach="geometry"
+              />
+              <MeshDistortMaterial
+                color={colors.cyan}
+                speed={distortSpeed}
+                radius={1}
+                distort={distortAmount}
+                transparent
+                opacity={0.4}
+                roughness={0}
+                side={FrontSide}
+              />
+            </mesh>
+          )}
         </animated.group>
       </group>
-      <animated.group
-        position={animatedCubePosition}
-      >
+      <animated.group position={animatedCubePosition}>
         <animated.group
           position={animatedCubeFloatingOffset}
           scale={animatedCubeScale}
         >
-          <mesh
-            ref={cubeRef as Ref<Mesh>}
-            renderOrder={active ? 1 : 0}
-          >
+          <mesh ref={cubeRef as Ref<Mesh>} renderOrder={active ? 1 : 0}>
             <roundedBoxGeometry
-              args={[1, 1, 1, 4, 0.1]}
+              args={[1, 1, 1, cubeSegments, 0.1]}
               attach="geometry"
             />
             <CoffeeVideoMaterial
@@ -237,7 +286,14 @@ export const ProjectEntry = ({
         />
       )}
 
-      <ProjectTitlePreview project={project} basePosition={basePosition} visible={hovering} />
+      {/* Only render title preview when hovering to save resources */}
+      {hovering && (
+        <ProjectTitlePreview
+          project={project}
+          basePosition={basePosition}
+          visible={hovering}
+        />
+      )}
     </>
   );
 };
