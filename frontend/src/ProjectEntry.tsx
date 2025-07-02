@@ -188,7 +188,6 @@ export const ProjectEntry = ({
 
   const textureLoader = useMemo(() => new TextureLoader(), []);
 
-  // Reduced distort material complexity for better performance
   const distortSpeed = devicePerformance === 'low' ? 3 : 6;
   const distortAmount = devicePerformance === 'low' ? 0.3 : 0.5;
 
