@@ -1,5 +1,5 @@
 import React, { Ref, useMemo, useRef, useState, useEffect } from 'react';
-import { MathUtils, Mesh, Object3D, FrontSide } from 'three';
+import { MathUtils, Mesh, Object3D, FrontSide, TextureLoader } from 'three';
 import {
   extend,
   ReactThreeFiber,
@@ -186,6 +186,8 @@ export const ProjectEntry = ({
   const { scene } = useSceneController();
   const active = hovering || open;
 
+  const textureLoader = useMemo(() => new TextureLoader(), []);
+
   // Reduced distort material complexity for better performance
   const distortSpeed = devicePerformance === 'low' ? 3 : 6;
   const distortAmount = devicePerformance === 'low' ? 0.3 : 0.5;
@@ -199,15 +201,19 @@ export const ProjectEntry = ({
   // Prepare assets early when hovering to reduce lag when opening
   useEffect(() => {
     if (hovering && !open) {
-      // Preload the project HTML content
-      const img = new Image();
-      img.src = `/videos/${project?.slug?.current}-thumb.jpg`;
+      // Preload the project thumbnail
+      const textureUrl = `/videos/${project?.slug?.current}-thumb.jpg`;
 
-      // Force GPU texture upload when hovering to prevent lag when opening
-      if (gl && gl.initTexture) {
-        const texture = gl.initTexture(img);
-        gl.renderLists.dispose();
-      }
+      // Use the proper Three.js way to preload textures
+      textureLoader.load(textureUrl, (texture) => {
+        // Texture loaded successfully
+        texture.needsUpdate = true;
+
+        // Optional: Force a rendering update to ensure texture is uploaded to GPU
+        if (gl) {
+          gl.renderLists.dispose();
+        }
+      });
     }
   }, [hovering, open, project?.slug?.current, gl]);
 
